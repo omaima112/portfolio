@@ -7,7 +7,8 @@
   const isGithubPages = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true';
 
   export default defineConfig({
-    base: isGithubPages ? '/Portfoilio/' : '/',
+    // GitHub Pages needs the repo name as base; keep root elsewhere
+    base: isGithubPages ? '/portfolio/' : '/',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
