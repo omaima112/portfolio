@@ -42,16 +42,6 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
               <Linkedin className="w-5 h-5" />
             </a>
 
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-white hover:bg-[#F6E1F0] text-[#5A2653] border-2 border-[#5A2653] rounded-lg transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.02] font-heading"
-              aria-label="Open resume"
-            >
-              Resume
-            </a>
-
             {/* Radix DropdownMenu anchored to the right-side actions */}
             <DropdownMenu.Root open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <DropdownMenu.Trigger asChild>
@@ -74,16 +64,6 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
                       className="inline-block z-[9999] bg-white rounded-lg shadow-lg border border-[#EED1E6] max-h-[60vh] overflow-auto origin-top-right"
                       style={{ willChange: 'transform, opacity', width: '20rem', maxWidth: '90vw' }}
                     >
-                    <DropdownMenu.Item asChild key="resume">
-                      <a
-                        href="/resume.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center px-3 py-2 rounded-md w-full hover:bg-[#F6E1F0] text-[#5A2653] font-heading transition-colors"
-                      >
-                        Resume
-                      </a>
-                    </DropdownMenu.Item>
                     {pages.map((p) => (
                       <DropdownMenu.Item asChild key={p}>
                         <button

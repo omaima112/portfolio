@@ -60,6 +60,15 @@ export function Hero({ onNavigate }: HeroProps) {
               >
                 View Projects
               </button>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-[#F6E1F0] text-[#5A2653] border-2 border-[#5A2653] rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-heading"
+              >
+                <GraduationCap className="w-5 h-5" />
+                Resume (PDF)
+              </a>
             </div>
           </div>
         </div>
