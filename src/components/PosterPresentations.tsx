@@ -1,27 +1,28 @@
 import { SectionWrapper } from './SectionWrapper';
 import { FileText, TrendingUp } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Slideshow } from './Slideshow';
 
 export function PosterPresentations() {
   const posters = [
     {
-      title: 'Microbial Enzyme Production for Industrial Applications',
-      conference: 'National Biotechnology Symposium 2024',
-      description: 'Research on optimizing fermentation conditions for enhanced amylase production using Bacillus subtilis.',
-      image: 'https://images.unsplash.com/photo-1710429112585-68a9c850a8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY2FkZW1pYyUyMGNvbmZlcmVuY2UlMjBwb3N0ZXJ8ZW58MXx8fHwxNzYyNjA4MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      award: 'Best Poster Award',
+      title: 'Industrial Biotechnology Applications and Innovations',
+      conference: 'Innovent 2025 | Inter-university Biotech Competition',
+      description: 'Led 4-member team to 2nd place finish with cash prize. Designed poster content and coordinated presentation strategy. Served as primary presenter for the project.',
+      award: '2nd Place',
+      slideshow: {
+        images: [
+          { src: '/website/poster presentation/9.png', caption: 'Poster design and presentation' },
+          { src: '/website/poster presentation/10.png', caption: 'Team coordination and Q&A' },
+          
+        ],
+      },
     },
     {
-      title: 'Antimicrobial Properties of Plant-Derived Compounds',
-      conference: 'Regional Science Fair 2024',
-      description: 'Investigation of antibacterial activity of selected medicinal plant extracts against common pathogens.',
-      image: 'https://images.unsplash.com/photo-1710429112585-68a9c850a8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY2FkZW1pYyUyMGNvbmZlcmVuY2UlMjBwb3N0ZXJ8ZW58MXx8fHwxNzYyNjA4MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    },
-    {
-      title: 'CRISPR-Based Gene Editing: A Literature Review',
-      conference: 'University Research Day 2023',
-      description: 'Comprehensive review of CRISPR applications in genetic disease treatment and agricultural improvement.',
-      image: 'https://images.unsplash.com/photo-1710429112585-68a9c850a8a3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhY2FkZW1pYyUyMGNvbmZlcmVuY2UlMjBwb3N0ZXJ8ZW58MXx8fHwxNzYyNjA4MzYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      title: 'Research Methodology in Biological Sciences',
+      conference: 'University Poster Presentation, 2024',
+      description: 'Led team of 6 members, coordinating research, design, and presentation strategies. Synthesized and visualized complex research methodologies from published literature. Delivered presentation to academic panel as part of research exposure training.',
+      image: '/website/poster presentation/11.png',
     },
   ];
 
@@ -33,18 +34,22 @@ export function PosterPresentations() {
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {posters.map((poster, index) => (
             <div
               key={index}
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
             >
               <div className="relative h-64 overflow-hidden bg-[#F6E1F0]">
-                <ImageWithFallback
-                  src={poster.image}
-                  alt={poster.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {poster.slideshow?.images ? (
+                  <Slideshow images={poster.slideshow.images} className="h-full" />
+                ) : (
+                  <ImageWithFallback
+                    src={poster.image}
+                    alt={poster.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {poster.award && (

@@ -1,40 +1,40 @@
 import { SectionWrapper } from './SectionWrapper';
-import { Dna, Leaf, Pill, Database } from 'lucide-react';
+import { Dna, Microscope, HeartPulse } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Slideshow } from './Slideshow';
 
 export function Projects() {
   const projects = [
     {
-      title: 'Enzyme Optimization for Biofuel Production',
-      description: 'Developed and optimized enzyme cocktails for efficient cellulose degradation in biofuel production. Conducted comparative analysis of different microbial strains and fermentation conditions.',
-      technologies: ['Fermentation', 'Enzyme Assays', 'Bioprocessing'],
-      image: 'https://images.unsplash.com/photo-1668600372069-e39ec2ab28af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaW90ZWNobm9sb2d5JTIwbGFib3JhdG9yeXxlbnwxfHx8fDE3NjI1MjgzMzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      icon: <Leaf className="w-6 h-6" />,
-      status: 'Completed',
-    },
-    {
-      title: 'Genetic Analysis of Disease Resistance in Plants',
-      description: 'Investigated genetic markers associated with disease resistance in crop plants using molecular techniques. Applied PCR and gel electrophoresis for genetic characterization.',
-      technologies: ['PCR', 'DNA Extraction', 'Genetic Markers'],
-      image: 'https://images.unsplash.com/photo-1668600372069-e39ec2ab28af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaW90ZWNobm9sb2d5JTIwbGFib3JhdG9yeXxlbnwxfHx8fDE3NjI1MjgzMzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+      title: 'Undergraduate Researcher - Final Year Project',
+      description: 'Conducting an undergraduate research project on coliphage-based strategies against multidrug-resistant E. coli. Isolating bacteriophages from wastewater-associated samples while developing skills in basic experimental design, laboratory documentation, and microbiological data interpretation.',
+      supervisor: 'Dr. Bushra Uzair, Associate Professor',
+      institution: 'International Islamic University Islamabad',
+      technologies: ['Bacteriophage Isolation', 'Microbiological Analysis', 'Experimental Design'],
+      image: '/website/Projects/5.png',
       icon: <Dna className="w-6 h-6" />,
-      status: 'Completed',
+      status: 'Ongoing',
+      period: 'September 2025 - Ongoing',
     },
     {
-      title: 'Development of Probiotic Formulations',
-      description: 'Researched and formulated probiotic supplements with enhanced stability and efficacy. Evaluated bacterial strains for their beneficial properties and survival in simulated gastrointestinal conditions.',
-      technologies: ['Microbiology', 'Formulation', 'Quality Control'],
-      image: 'https://images.unsplash.com/photo-1668600372069-e39ec2ab28af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaW90ZWNobm9sb2d5JTIwbGFib3JhdG9yeXxlbnwxfHx8fDE3NjI1MjgzMzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      icon: <Pill className="w-6 h-6" />,
-      status: 'In Progress',
+      title: 'Understanding Vitiligo: Exploring Self-Esteem & Quality of Life',
+      description: 'Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.',
+      institution: 'Immunology Course Project | IIUI',
+      technologies: ['Survey Design', 'Data Collection', 'Psychological Analysis'],
+      images: ['/website/Projects/6.png', '/website/Projects/7.png'],
+      icon: <HeartPulse className="w-6 h-6" />,
+      status: 'Completed',
+      period: '2024',
     },
     {
-      title: 'Bioinformatics Database for Local Medicinal Plants',
-      description: 'Created a comprehensive database cataloging medicinal plants native to the region, including their bioactive compounds, traditional uses, and scientific research findings.',
-      technologies: ['Database Design', 'Data Collection', 'Web Development'],
-      image: 'https://images.unsplash.com/photo-1668600372069-e39ec2ab28af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaW90ZWNobm9sb2d5JTIwbGFib3JhdG9yeXxlbnwxfHx8fDE3NjI1MjgzMzV8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-      icon: <Database className="w-6 h-6" />,
+      title: 'Bacterial Isolation from Traditional Fermented Foods',
+      description: 'Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.',
+      institution: 'Microbial Biotechnology Laboratory Project | IIUI',
+      technologies: ['Serial Dilution', 'Bacterial Isolation', 'Morphological Analysis'],
+      image: '/website/Projects/8.png',
+      icon: <Microscope className="w-6 h-6" />,
       status: 'Completed',
+      period: '2024',
     },
   ];
 
@@ -53,11 +53,19 @@ export function Projects() {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
             >
               <div className="relative h-56 overflow-hidden bg-[#F6E1F0]">
-                <ImageWithFallback
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+                {project.images && project.images.length > 0 ? (
+                  <Slideshow
+                    images={project.images.map((src) => ({ src }))}
+                    className="w-full h-full"
+                    interval={2000}
+                  />
+                ) : (
+                  <ImageWithFallback
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 
                 <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
@@ -70,6 +78,25 @@ export function Projects() {
               
               <div className="p-6">
                 <h3 className="font-heading text-[#5A2653] mb-3 text-2xl md:text-3xl font-semibold">{project.title}</h3>
+                
+                {project.supervisor && (
+                  <p className="font-body text-gray-700 mb-2">
+                    <strong>Supervisor:</strong> {project.supervisor}
+                  </p>
+                )}
+                
+                {project.institution && (
+                  <p className="font-body text-gray-700 mb-2">
+                    <strong>Institution:</strong> {project.institution}
+                  </p>
+                )}
+                
+                {project.period && (
+                  <p className="font-body text-gray-600 mb-3 italic">
+                    {project.period}
+                  </p>
+                )}
+                
                 <p className="font-body text-gray-600 mb-4">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2">

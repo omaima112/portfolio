@@ -3,7 +3,11 @@
   import react from '@vitejs/plugin-react-swc';
   import path from 'path';
 
+  // Use repo base on GitHub Pages; keep root for Vercel/local
+  const isGithubPages = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true';
+
   export default defineConfig({
+    base: isGithubPages ? '/Portfoilio/' : '/',
     plugins: [react()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
@@ -51,7 +55,7 @@
     },
     build: {
       target: 'esnext',
-      outDir: 'build',
+      outDir: 'dist',
     },
     server: {
       port: 3000,

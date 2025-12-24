@@ -1,6 +1,10 @@
 import { Heart, Linkedin, Mail } from 'lucide-react';
 
-export function Footer() {
+interface FooterProps {
+  onNavigate: (page: 'About Me' | 'Experiences' | 'Projects' | 'Contact') => void;
+}
+
+export function Footer({ onNavigate }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -15,24 +19,40 @@ export function Footer() {
 
           {/* Center - Links */}
           <div className="flex flex-wrap justify-center gap-6">
-            <a href="#about" className="font-heading hover:text-[#EED1E6] transition-colors duration-200">
+            <button
+              type="button"
+              onClick={() => onNavigate('About Me')}
+              className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
+            >
               About
-            </a>
-            <a href="#experiences" className="font-heading hover:text-[#EED1E6] transition-colors duration-200">
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('Experiences')}
+              className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
+            >
               Experience
-            </a>
-            <a href="#projects" className="font-heading hover:text-[#EED1E6] transition-colors duration-200">
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('Projects')}
+              className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
+            >
               Projects
-            </a>
-            <a href="#contact" className="font-heading hover:text-[#EED1E6] transition-colors duration-200">
+            </button>
+            <button
+              type="button"
+              onClick={() => onNavigate('Contact')}
+              className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
+            >
               Contact
-            </a>
+            </button>
           </div>
 
           {/* Right Side - Social */}
           <div className="flex items-center gap-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"
@@ -41,7 +61,7 @@ export function Footer() {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="mailto:fatima@example.com"
+              href="mailto:fatima.mushtaq40@gmail.com"
               className="p-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"
               aria-label="Email"
             >

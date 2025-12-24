@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useState } from 'react';
-
 export function Contact() {
   const [formData, setFormData] = useState({
     name: '',
@@ -47,28 +46,28 @@ export function Contact() {
 
               <div className="space-y-4">
                 <a
-                  href="mailto:fatima@example.com"
+                  href="mailto:fatima.mushtaq40@gmail.com"
                   className="flex items-center gap-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"
                 >
                   <Mail className="w-5 h-5" />
-                  <span className="font-body">fatima@example.com</span>
+                  <span className="font-body">fatima.mushtaq40@gmail.com</span>
                 </a>
 
                 <a
-                  href="tel:+1234567890"
+                  href="tel:+923305865867"
                   className="flex items-center gap-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"
                 >
                   <Phone className="w-5 h-5" />
-                  <span className="font-body">+1 (234) 567-8900</span>
+                  <span className="font-body">+92 330 5865867</span>
                 </a>
 
                 <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg">
                   <MapPin className="w-5 h-5" />
-                  <span className="font-body">City, Country</span>
+                  <span className="font-body">Islamabad, Pakistan</span>
                 </div>
 
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"

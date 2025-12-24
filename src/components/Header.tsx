@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Linkedin, Download, Menu, X } from 'lucide-react';
+import { Linkedin, Menu, X } from 'lucide-react';
 import { motion } from 'motion/react';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Button } from './ui/button';
@@ -11,7 +11,6 @@ interface HeaderProps {
 }
 
 export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
-  const [isResumeOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -34,7 +33,7 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3 relative">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg transition-all duration-300 hover:bg-[#F6E1F0] text-[#5A2653]"
@@ -43,17 +42,15 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
               <Linkedin className="w-5 h-5" />
             </a>
 
-            <Button
-              className="hidden sm:flex items-center gap-2 bg-[#5A2653] hover:bg-[#7E3F74] text-white transition-all duration-300"
-              onClick={() => {
-                // Placeholder for resume download
-                /* eslint-disable no-alert */
-                alert('Resume download would trigger here');
-              }}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 bg-white hover:bg-[#F6E1F0] text-[#5A2653] border-2 border-[#5A2653] rounded-lg transition-all duration-300 shadow-sm hover:shadow-md hover:scale-[1.02] font-heading"
+              aria-label="Open resume"
             >
-              <Download className="w-4 h-4" />
               Resume
-            </Button>
+            </a>
 
             {/* Radix DropdownMenu anchored to the right-side actions */}
             <DropdownMenu.Root open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -77,6 +74,16 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
                       className="inline-block z-[9999] bg-white rounded-lg shadow-lg border border-[#EED1E6] max-h-[60vh] overflow-auto origin-top-right"
                       style={{ willChange: 'transform, opacity', width: '20rem', maxWidth: '90vw' }}
                     >
+                    <DropdownMenu.Item asChild key="resume">
+                      <a
+                        href="/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center px-3 py-2 rounded-md w-full hover:bg-[#F6E1F0] text-[#5A2653] font-heading transition-colors"
+                      >
+                        Resume
+                      </a>
+                    </DropdownMenu.Item>
                     {pages.map((p) => (
                       <DropdownMenu.Item asChild key={p}>
                         <button

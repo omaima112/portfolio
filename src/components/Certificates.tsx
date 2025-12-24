@@ -1,57 +1,97 @@
 import { SectionWrapper } from './SectionWrapper';
-import { InteractiveCard } from './InteractiveCard';
 import { Award, CheckCircle } from 'lucide-react';
+import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Badge } from './ui/badge';
 
 export function Certificates() {
   const certificates = [
     {
-      title: 'Advanced Molecular Biology Techniques',
-      subtitle: 'International Biotechnology Institute',
-      description: 'Comprehensive training in CRISPR-Cas9 gene editing, next-generation sequencing, and advanced PCR techniques. Hands-on laboratory experience with cutting-edge molecular tools.',
-      date: 'Aug 2024',
+      title: 'Bacteria and Chronic Infections',
+      subtitle: 'University of Copenhagen | Coursera',
+      date: '2025',
       icon: <Award className="w-6 h-6" />,
-      hoverPreview: {
-        image: 'https://images.unsplash.com/photo-1759560245150-8dcbb7f01142?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZXJ0aWZpY2F0ZSUyMGF3YXJkJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzYyNjA4MzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-        caption: 'Receiving the certificate was a proud moment, validating months of dedicated learning in molecular techniques.',
-      },
-      skills: [' CRISPR ',   ' NGS',   'PCR',   'Lab Techniques'],
+      skills: ['Infection Biology', 'Host-Pathogen'],
+      image: '/website/certificates/Capture8.PNG',
     },
     {
-      title: 'Bioinformatics and Computational Biology',
-      subtitle: 'Online Learning Platform - Coursera',
-      description: 'Mastered genome analysis, protein structure prediction, and biological database utilization. Applied computational approaches to solve real biological problems.',
-      date: 'May 2024',
+      title: 'Antimicrobial Resistance: Theory and Methods',
+      subtitle: 'Technical University of Denmark (DTU) | Coursera',
+      date: '2025',
       icon: <CheckCircle className="w-6 h-6" />,
-      hoverPreview: {
-        image: 'https://images.unsplash.com/photo-1759560245150-8dcbb7f01142?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZXJ0aWZpY2F0ZSUyMGF3YXJkJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzYyNjA4MzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-        caption: 'This course opened new horizons in understanding how computational tools enhance biological research.',
-      },
-      skills: ['Genome Analysis', 'Python', 'Databases'],
+      skills: ['AMR', 'Surveillance', 'Lab Methods'],
+      image: '/website/certificates/Capture5.PNG',
     },
     {
-      title: 'Good Laboratory Practice (GLP)',
-      subtitle: 'National Accreditation Board',
-      description: 'Certified in standard laboratory safety protocols, quality assurance procedures, and documentation practices essential for research and industrial laboratories.',
-      date: 'Mar 2024',
+      title: 'New Paradigms in Wastewater Management',
+      subtitle: 'Politecnico di Milano | Coursera',
+      date: '2025',
       icon: <Award className="w-6 h-6" />,
-      hoverPreview: {
-        image: 'https://images.unsplash.com/photo-1759560245150-8dcbb7f01142?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZXJ0aWZpY2F0ZSUyMGF3YXJkJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzYyNjA4MzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-        caption: 'GLP certification equipped me with critical safety and quality standards for professional laboratory work.',
-      },
-      skills: ['GLP', 'Safety', 'QA/QC'],
+      skills: ['Wastewater', 'Sustainability'],
+      image: '/website/certificates/Capture3.PNG',
     },
     {
-      title: 'Pharmaceutical Biotechnology',
-      subtitle: 'Professional Development Institute',
-      description: 'In-depth training on drug development processes, vaccine technology, and therapeutic protein production. Focus on industrial applications of biotechnology.',
-      date: 'Jan 2024',
+      title: 'Algae Biotechnology',
+      subtitle: 'University of California San Diego | Coursera',
+      date: '2025',
       icon: <CheckCircle className="w-6 h-6" />,
-      hoverPreview: {
-        image: 'https://images.unsplash.com/photo-1759560245150-8dcbb7f01142?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjZXJ0aWZpY2F0ZSUyMGF3YXJkJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzYyNjA4MzYzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-        caption: 'Understanding pharmaceutical applications deepened my appreciation for biotechnology\'s real-world impact.',
-      },
-      skills: ['Bioprocessing', 'Vaccine Tech', 'Drug Dev'],
+      skills: ['Algae', 'Biofuels', 'Bioproducts'],
+      image: '/website/certificates/7.PNG',
+    },
+    {
+      title: 'Social Dimensions of Antimicrobial Resistance',
+      subtitle: 'University of Amsterdam | Coursera',
+      date: '2025',
+      icon: <Award className="w-6 h-6" />,
+      skills: ['Public Health', 'Policy', 'AMR'],
+      image: '/website/certificates/Capture6.PNG',
+    },
+    {
+      title: 'Circular Economy: Sustainable Materials Management',
+      subtitle: 'Lund University | Coursera',
+      date: '2025',
+      icon: <CheckCircle className="w-6 h-6" />,
+      skills: ['Circular Economy', 'Sustainability'],
+      image: '/website/certificates/Capture9.PNG',
+    },
+    {
+      title: 'Environmental Health: The Foundation of Global Public Health',
+      subtitle: 'University of Michigan | Coursera',
+      date: '2025',
+      icon: <Award className="w-6 h-6" />,
+      skills: ['Environmental Health', 'Risk'],
+      image: '/website/certificates/Capture4.PNG',
+    },
+    {
+      title: 'Whole Genome Sequencing of Bacterial Genomes: Tools and Applications',
+      subtitle: 'Technical University of Denmark (DTU) | Coursera',
+      date: '2025',
+      icon: <CheckCircle className="w-6 h-6" />,
+      skills: ['WGS', 'Bioinformatics', 'Surveillance'],
+      image: '/website/certificates/Capture2.PNG',
+    },
+    {
+      title: 'Scientific Research Writing Course',
+      subtitle: 'Multiomics | 2023',
+      date: '2023',
+      icon: <Award className="w-6 h-6" />,
+      skills: ['Sci Writing', 'Communication'],
+      image: '/website/certificates/Capture10.PNG',
+    },
+    {
+      title: 'Aspire Leaders Program',
+      subtitle: 'Aspire Institute | 2025',
+      date: '2025',
+      icon: <CheckCircle className="w-6 h-6" />,
+      skills: ['Leadership', 'Collaboration'],
+      image: '/website/certificates/Capture1.PNG',
+    },
+    {
+      title: 'Fundamental Skills in Bioinformatics',
+      subtitle: 'Ongoing',
+      date: 'Ongoing',
+      icon: <Award className="w-6 h-6" />,
+      skills: ['Bioinformatics', 'Sequence Analysis'],
+      // No image while ongoing
     },
   ];
 
@@ -62,42 +102,54 @@ export function Certificates() {
       subtitle="Professional certifications and specialized training"
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-        {certificates.map((cert, index) => (
-          <InteractiveCard
-            key={index}
-            title={cert.title}
-            subtitle={cert.subtitle}
-            description={cert.description}
-            date={cert.date}
-            icon={cert.icon}
-            hoverPreview={cert.hoverPreview}
-          >
-            {/* image + skills passed as children so certificates behave like interactive cards */}
-            {cert.hoverPreview?.image && (
-              <div className="w-full mb-4 flex justify-center">
-                <img
-                  src={cert.hoverPreview.image}
-                  alt={cert.title}
-                  className="w-full h-40 md:h-48 object-cover rounded-md border"
-                />
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {certificates.map((cert, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
+            >
+              <div className="relative h-64 overflow-hidden bg-white">
+                {cert.image ? (
+                  <ImageWithFallback
+                    src={cert.image}
+                    alt={cert.title}
+                    className="w-full h-full object-contain p-2"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-white">
+                    <span className="font-heading text-[#5A2653]">Ongoing</span>
+                  </div>
+                )}
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2">
+                  {cert.icon}
+                  <span className="font-heading text-[#5A2653]">{cert.date}</span>
+                </div>
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                  <span className="font-heading text-[#5A2653] text-xs">{((cert.subtitle || '').split('|')[0]).trim()}</span>
+                </div>
               </div>
-            )}
 
-            {cert.skills && (
-              <div className="mt-3 flex flex-wrap gap-3">
-                {cert.skills.map((s, i) => (
-                  <Badge
-                    key={i}
-                    className="bg-[#F6E1F0] text-[#5A2653] px-2 py-0.5 text-xs"
-                  >
-                    {s.trim()}
-                  </Badge>
-                ))}
+              <div className="p-4 min-h-40">
+                <h3 className="font-heading text-[#5A2653] text-sm font-semibold line-clamp-2 mb-2">{cert.title}</h3>
+                <p className="font-body text-[#7E3F74] text-xs line-clamp-2 mb-3">{cert.subtitle}</p>
+
+                {cert.skills && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {cert.skills.map((s, i) => (
+                      <Badge
+                        key={i}
+                        className="bg-[#F6E1F0] text-[#5A2653] px-2 py-0.5 text-xs"
+                      >
+                        {s.trim()}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </InteractiveCard>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );

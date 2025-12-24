@@ -1,28 +1,16 @@
 import { SectionWrapper } from './SectionWrapper';
-import { Heart, Microscope, BookOpen, Target } from 'lucide-react';
 
 export function AboutMe() {
-  const interests = [
-    {
-      icon: <Microscope className="w-6 h-6" />,
-      title: 'Research',
-      description: 'Passionate about molecular biology and genetic engineering research',
-    },
-    {
-      icon: <BookOpen className="w-6 h-6" />,
-      title: 'Learning',
-      description: 'Continuously expanding knowledge in biotechnology and life sciences',
-    },
-    {
-      icon: <Target className="w-6 h-6" />,
-      title: 'Innovation',
-      description: 'Driven to contribute to advancements in biomedical applications',
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      title: 'Community',
-      description: 'Active in academic communities and volunteer initiatives',
-    },
+  const researchInterests = [
+    'Coliphages',
+    'Antimicrobial Resistance',
+    'Bacterial Biofilms',
+    'Microbial Contaminants',
+    'Wastewater-Based Surveillance',
+    'Environmental Microbiology',
+    'Water Reuse Safety',
+    'One Health',
+    'Microbial Biotechnology',
   ];
 
   return (
@@ -34,36 +22,52 @@ export function AboutMe() {
     >
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-[#EED1E6]">
-          <p className="font-body text-gray-700 mb-6">
-            I am currently pursuing my Bachelor of Science in Biotechnology, now in my 8th semester. 
-            Throughout my academic journey, I have developed a deep appreciation for the intersection of 
-            biology, technology, and innovation. My studies have equipped me with comprehensive knowledge 
-            in molecular biology, biochemistry, genetics, and bioprocessing technologies.
-          </p>
-          
-          <p className="font-body text-gray-700 mb-8">
-            Beyond the classroom, I have actively participated in research projects, seminars, and 
-            workshops that have enhanced my practical skills and broadened my perspective on the field. 
-            I am particularly interested in areas such as genetic engineering, pharmaceutical biotechnology, 
-            and sustainable bioprocessing solutions.
-          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {interests.map((interest, index) => (
-              <div
-                key={index}
-                className="flex items-start gap-4 p-4 rounded-lg bg-[#F6E1F0]/30 hover:bg-[#F6E1F0]/60 transition-all duration-300 border border-[#EED1E6]"
-              >
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#5A2653] to-[#7E3F74] rounded-lg flex items-center justify-center text-white">
-                  {interest.icon}
-                </div>
-                <div>
-                  <h4 className="font-heading text-[#5A2653] mb-1">{interest.title}</h4>
-                  <p className="font-body text-gray-600">{interest.description}</p>
-                </div>
-              </div>
-            ))}
+          {/* TEXT */}
+          <div className="space-y-6">
+            
+
+            <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
+              I am currently pursuing a Bachelor of Science in Biotechnology and am in my final semester, with a strong academic interest in the intersection of microbiology, environmental health, and sustainable biotechnological solutions.
+            </p>
+
+            <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
+              My final year research project, which investigates phage-based biocontrol strategies against multidrug-resistant bacterial biofilms, has allowed me to explore biological alternatives to conventional antimicrobial approaches.
+            </p>
+
+            <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
+              I am motivated to pursue advanced research training that bridges fundamental microbiology and molecular biology with real-world environmental challenges, particularly those related to water quality, antimicrobial resistance, and public health.
+            </p>
+
+            {/* Headings removed from text; shown in cards below */}
           </div>
+
+          {/* FORCED GAP */}
+          <div className="h-16 md:h-24" />
+
+          {/* SECTIONS */}
+          <div className="space-y-6">
+            {/* Research Interests Section */}
+            <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">Research Interests</h4>
+              <div className="flex flex-wrap gap-2">
+                {researchInterests.map((item, idx) => (
+                  <span key={idx} className="px-3 py-1 bg-[#F6E1F0] text-[#5A2653] rounded-full font-heading text-sm">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Beyond Science Section */}
+            <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">Beyond Science</h4>
+              <p className="font-body text-gray-700 text-base md:text-lg leading-relaxed">
+                Interest in visual storytelling, digital design, and creative projects beyond the laboratory.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </SectionWrapper>

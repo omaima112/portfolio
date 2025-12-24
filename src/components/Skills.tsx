@@ -61,42 +61,5 @@ export function Skills() {
     },
   ];
 
-  return (
-    <SectionWrapper
-      id="skills"
-      title="Skills"
-      subtitle="Technical expertise and professional competencies"
-      className="bg-gradient-to-br from-white to-[#F6E1F0]"
-    >
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#5A2653] to-[#7E3F74] rounded-lg flex items-center justify-center text-white">
-                  {category.icon}
-                </div>
-                <h3 className="font-heading text-[#5A2653]">{category.category}</h3>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <div
-                    key={skillIndex}
-                    className="flex items-center gap-2 p-2 rounded-lg bg-[#F6E1F0]/40 hover:bg-[#F6E1F0] transition-colors duration-200"
-                  >
-                    <div className="w-2 h-2 bg-[#A86A9A] rounded-full flex-shrink-0"></div>
-                    <span className="font-body text-gray-700">{skill}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </SectionWrapper>
-  );
+    return null;
 }
