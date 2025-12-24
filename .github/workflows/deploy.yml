@@ -29,6 +29,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          # Auto-enable Pages for this repo when not already configured
+          enablement: true
 
       - name: Install dependencies
         run: npm ci
