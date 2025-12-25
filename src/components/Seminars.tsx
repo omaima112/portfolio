@@ -31,7 +31,7 @@ export function Seminars() {
       subtitle: 'IIUI 2024',
       description: 'Online workshop on molecular informatics techniques',
       icon: <Video className="w-6 h-6" />,
-      image: '/website/seminar and workshop/Capture4.PNG',
+      image: '/website/seminar and workshop/6.PNG',
     },
     {
       title: 'Hands-on microbiology workshop',
@@ -45,7 +45,7 @@ export function Seminars() {
       subtitle: 'IIUI 2024',
       description: 'Workshop on bioethics principles and biosafety protocols',
       icon: <Video className="w-6 h-6" />,
-      image: '/website/seminar and workshop/WhatsApp%20Image%202025-12-24%20at%207.48.34%20PM.jpeg',
+      image: '/website/seminar and workshop/WhatsApp Image 2025-03-11 at 2.06.00 AM.jpeg',
     },
   ];
 
