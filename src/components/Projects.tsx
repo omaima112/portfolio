@@ -7,11 +7,11 @@ export function Projects() {
   const projects = [
     {
       title: 'Undergraduate Researcher - Final Year Project',
-      description: 'Conducting an undergraduate research project on coliphage-based strategies against multidrug-resistant E. coli. Isolating bacteriophages from wastewater-associated samples while developing skills in basic experimental design, laboratory documentation, and microbiological data interpretation.',
+      description: 'Isolating bacteriophages from wastewater-associated samples while developing skills in basic experimental design, laboratory documentation, and microbiological data interpretation.',
       supervisor: 'Dr. Bushra Uzair, Associate Professor',
       institution: 'International Islamic University Islamabad',
       technologies: ['Bacteriophage Isolation', 'Microbiological Analysis', 'Experimental Design'],
-      image: '/website/Projects/5.png',
+      image: '/website/Projects/KAUST CV.png',
       icon: <Dna className="w-6 h-6" />,
       status: 'Ongoing',
       period: 'September 2025 - Ongoing',
