@@ -2334,3 +2334,10 @@ html {
   inherits: false;
   initial-value: 0;
 }
+=======
+
+* {
+  cursor: url("/cursors/cat-paw.png") 16 16, auto; /* for 32x32 */
+  /* or */
+  cursor: url("/cursors/cat-paw.png") 24 24, auto; /* for 48x48 */
+}

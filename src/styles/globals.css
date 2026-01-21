@@ -38,6 +38,12 @@
   --sidebar-primary: #030213;
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
+}
+
+/* Custom cursor: Cat Paw */
+* {
+  cursor: url('/cursors/cat-paw.png') 16 16, auto;
+}
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
