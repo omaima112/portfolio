@@ -1,0 +1,7 @@
+{
+  // Disable the built-in VS Code CSS/SCSS/LESS validator to avoid false-positive parse errors
+  // Tailwind/PostCSS constructs can confuse the default parser — the project still builds with Vite.
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false
+}
