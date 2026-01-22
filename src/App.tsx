@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+
+
+import { useState } from 'react';
+
 import { AnimatePresence, motion } from 'motion/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -43,27 +46,7 @@ const pageOrder: PageKey[] = [
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>('Homepage');
-  // Paw overlay state for mobile
-  const [pawPos, setPawPos] = useState<{ x: number; y: number } | null>(null);
 
-  // Show paw overlay only on mobile (pointer: coarse)
-  React.useEffect(() => {
-    const isMobile = window.matchMedia('(pointer: coarse)').matches;
-    if (!isMobile) return;
-
-    const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      setPawPos({ x: touch.clientX, y: touch.clientY });
-    };
-    const handleTouchEnd = () => setPawPos(null);
-
-    window.addEventListener('touchmove', handleTouchMove);
-    window.addEventListener('touchend', handleTouchEnd);
-    return () => {
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
 
   const renderPage = (page: PageKey) => {
     switch (page) {
@@ -95,23 +78,9 @@ export default function App() {
   };
 
   return (
-     <div className="min-h-screen overflow-x-hidden bg-white flex flex-col">
-        {/* Mobile paw overlay */}
-        {pawPos && (
-          <img
-            src="/paw.png"
-            alt="paw cursor"
-            style={{
-              position: 'fixed',
-              left: pawPos.x - 16,
-              top: pawPos.y - 16,
-              width: 32,
-              height: 32,
-              pointerEvents: 'none',
-              zIndex: 9999,
-            }}
-          />
-        )}
+
+    <div className="min-h-screen overflow-x-hidden bg-white flex flex-col">
+
       <Header
         pages={pageOrder}
         currentPage={currentPage}
