@@ -8,13 +8,16 @@ export function Leadership() {
     {
       title: 'Ambassador & Internee — CLC Creative Leadership Conference 2.0',
       subtitle: 'Conference Ambassador | Social media, blogs, and publications team',
-      description: 'Served as conference ambassador while managing social media content for blogs, writing, and publications team.',
+      description: [
+        '• Served as conference ambassador while managing social media content for blogs, writing, and publications team.',
+        '• Demonstrated leadership and communication skills by leading essay competition outreach initiative, successfully engaging multiple colleges and coordinating institutional participation to drive student enrollment.'
+      ],
       date: 'July 2024 - Oct 2024',
-      icon: <Award className="w-6 h-6" />,
+      icon: <Award className="w-6 h-6" />, 
       slideshow: {
         images: [
           { src: '/website/extracurricualr/14.png', caption: 'Conference opening and welcome' },
-{ src: '/website/extracurricualr/17.png', caption: 'Closing session highlights' },
+          { src: '/website/extracurricualr/17.png', caption: 'Closing session highlights' },
         ],
       },
     },
@@ -76,7 +79,15 @@ export function Leadership() {
               </div>
 
               <p className="font-body text-[#7E3F74] text-sm mb-2">{item.subtitle}</p>
-              <p className="font-body text-gray-600 text-sm mb-3">{item.description}</p>
+              {Array.isArray(item.description) ? (
+                <ul className="list-disc pl-5 text-gray-600 text-sm mb-3">
+                  {item.description.map((point, idx) => (
+                    <li key={idx}>{point}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="font-body text-gray-600 text-sm mb-3">{item.description}</p>
+              )}
               <p className="font-body text-gray-500 text-xs italic">{item.date}</p>
             </div>
           </div>

@@ -6,15 +6,19 @@ import { Slideshow } from './Slideshow';
 export function Projects() {
   const projects = [
     {
-      title: 'Undergraduate Researcher - Final Year Project',
-      description: 'Isolating bacteriophages from wastewater-associated samples while developing skills in basic experimental design, laboratory documentation, and microbiological data interpretation.',
+      title: 'Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms',
+      description: [
+        'Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.',
+        'Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR).'
+      ],
       supervisor: 'Dr. Bushra Uzair, Associate Professor',
       institution: 'International Islamic University Islamabad',
-      technologies: ['Bacteriophage Isolation', 'Microbiological Analysis', 'Experimental Design'],
+      technologies: ['Coliphage Isolation', 'Biofilm Assays', 'Microbiological Techniques', 'Environmental Remediation'],
       image: '/website/Projects/KAUST CV.png',
       icon: <Dna className="w-6 h-6" />,
-      status: 'Ongoing',
-      period: 'September 2025 - Ongoing',
+      status: 'Completed',
+      period: '2025 - Defense Done',
+      tags: [],
     },
     {
       title: 'Understanding Vitiligo: Exploring Self-Esteem & Quality of Life',
@@ -25,6 +29,7 @@ export function Projects() {
       icon: <HeartPulse className="w-6 h-6" />,
       status: 'Completed',
       period: '2024',
+      tags: [],
     },
     {
       title: 'Bacterial Isolation from Traditional Fermented Foods',
@@ -35,6 +40,7 @@ export function Projects() {
       icon: <Microscope className="w-6 h-6" />,
       status: 'Completed',
       period: '2024',
+      tags: [],
     },
   ];
 
@@ -73,6 +79,15 @@ export function Projects() {
                     {project.icon}
                     <span className="font-heading text-[#5A2653]">{project.status}</span>
                   </div>
+                  {project.tags && project.tags.length > 0 && (
+                    <div className="flex gap-2 ml-2">
+                      {project.tags.map((tag, tagIdx) => (
+                        <span key={tagIdx} className="px-2 py-0.5 bg-green-200 text-green-800 rounded-full text-xs font-semibold border border-green-300">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
               
@@ -97,7 +112,15 @@ export function Projects() {
                   </p>
                 )}
                 
-                <p className="font-body text-gray-600 mb-4">{project.description}</p>
+                {Array.isArray(project.description) ? (
+                  <ul className="list-disc pl-5 text-gray-600 mb-4">
+                    {project.description.map((point, idx) => (
+                      <li key={idx}>{point}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="font-body text-gray-600 mb-4">{project.description}</p>
+                )}
                 
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
