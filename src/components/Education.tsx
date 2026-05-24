@@ -5,40 +5,19 @@ import { useTranslation } from 'react-i18next';
 export function Education() {
   const { t } = useTranslation();
 
-  const education = [
-    {
-      degree: 'Bachelor of Science in Biotechnology',
-      institution: 'International Islamic University, Islamabad',
-      location: 'Islamabad, Pakistan',
-      period: 'Jan 2022 - 2026',
-      currentSemester: '8th Semester',
-      cgpa: '3.95',
-      expectedGraduation: 'Feb 2026',
-      coursework: [
-        'Environmental Biotechnology',
-        'Microbial Biotechnology',
-        'Food Biotechnology',
-        'Biochemical Engineering',
-        'Microbiology',
-        'Molecular Biology',
-        'Virology',
-        'Industrial Biotechnology',
-        'Genomics & Proteomics',
-        'Ecology, Biodiversity & Evolution'
-      ],
-    },
-    {
-      degree: 'Higher Secondary Certificate (HSSC) in FSc Pre-medical',
-      institution: 'PAEC Model College Nilore, Islamabad',
-      location: 'Islamabad, Pakistan',
-      period: 'Sep 2019 - Sep 2021',
-      grade: 'A+',
-      coreSubjects: ['Biology', 'Chemistry', 'Physics'],
-      highlights: [
-        'Awarded Gold Medal for Academic Excellence',
-      ],
-    },
-  ];
+  const education = t('education.items', { returnObjects: true }) as Array<{
+    degree: string;
+    institution: string;
+    location: string;
+    period: string;
+    currentSemester?: string;
+    cgpa?: string;
+    expectedGraduation?: string;
+    coursework?: string[];
+    grade?: string;
+    coreSubjects?: string[];
+    highlights?: string[];
+  }>;
 
   return (
     <SectionWrapper
@@ -52,7 +31,7 @@ export function Education() {
           {education.map((edu, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-xl p-6 md:p-8 border-l-4 border-[#5A2653] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="relative bg-white rounded-xl p-6 md:p-8 ltr:border-l-4 rtl:border-r-4 border-[#5A2653] shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                 <div className="flex-1">
@@ -88,20 +67,20 @@ export function Education() {
               </div>
 
               {edu.cgpa && (
-                <p className="font-body text-gray-700 mb-4">
-                  <strong>CGPA:</strong> {edu.cgpa}
+                  <p className="font-body text-gray-700 mb-4">
+                  <strong>{t('education.cgpa')}:</strong> {edu.cgpa}
                 </p>
               )}
 
               {edu.grade && (
                 <p className="font-body text-gray-700 mb-4">
-                  <strong>Grade:</strong> {edu.grade}
+                  <strong>{t('education.grade')}:</strong> {edu.grade}
                 </p>
               )}
 
               {edu.coursework && (
                 <div className="mb-4">
-                  <p className="font-heading text-[#5A2653] mb-2">Relevant Coursework:</p>
+                  <p className="font-heading text-[#5A2653] mb-2">{t('education.relevantCoursework')}:</p>
                   <div className="flex flex-wrap gap-2">
                     {edu.coursework.map((course, cIndex) => (
                       <span key={cIndex} className="inline-block px-2 py-1 bg-[#F6E1F0]/50 text-[#5A2653] rounded-full text-xs font-body">
@@ -114,7 +93,7 @@ export function Education() {
 
               {edu.coreSubjects && (
                 <div className="mb-4">
-                  <p className="font-heading text-[#5A2653] mb-2">Core Subjects:</p>
+                  <p className="font-heading text-[#5A2653] mb-2">{t('education.coreSubjects')}:</p>
                   <div className="flex flex-wrap gap-2">
                     {edu.coreSubjects.map((subject, sIndex) => (
                       <span key={sIndex} className="inline-block px-3 py-1 bg-[#F6E1F0]/50 text-[#5A2653] rounded-full text-sm font-body">

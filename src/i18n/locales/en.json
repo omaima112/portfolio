@@ -17,60 +17,85 @@
     "paragraph2": "My final year research project, which investigates phage-based biocontrol strategies against multidrug-resistant bacterial biofilms, has allowed me to explore biological alternatives to conventional antimicrobial approaches.",
     "paragraph3": "I am motivated to pursue advanced research training that bridges fundamental microbiology and molecular biology with real-world environmental challenges, particularly those related to water quality, antimicrobial resistance, and public health.",
     "researchInterests": "Research Interests",
+    "researchItems": ["Environmental Microbiology", "Antimicrobial Resistance", "Phage Biology", "Biofilm Engineering"],
     "beyondScience": "Beyond Science",
     "beyondScienceText": "Interest in visual storytelling, digital design, and creative projects beyond the laboratory."
   },
   "education": {
     "title": "Education",
     "subtitle": "My academic foundation and achievements",
-    "degree": "Degree",
-    "institution": "Institution",
-    "location": "Location",
-    "period": "Period",
     "cgpa": "CGPA",
     "grade": "Grade",
-    "currentSemester": "Current Semester",
     "expectedGraduation": "Expected Graduation",
     "relevantCoursework": "Relevant Coursework",
     "coreSubjects": "Core Subjects",
-    "bs": "Bachelor of Science in Biotechnology",
-    "iiui": "International Islamic University, Islamabad",
-    "islamabad": "Islamabad, Pakistan",
-    "bsperiod": "Jan 2022 - 2026",
-    "semester8": "8th Semester",
-    "feb2026": "Feb 2026",
-    "hssc": "Higher Secondary Certificate (HSSC) in FSc Pre-medical",
-    "paec": "PAEC Model College Nilore, Islamabad",
-    "sep2019": "Sep 2019 - Sep 2021",
-    "aplus": "A+",
-    "goldMedal": "Awarded Gold Medal for Academic Excellence"
+    "items": [
+      {
+        "degree": "Bachelor of Science in Biotechnology",
+        "institution": "International Islamic University, Islamabad",
+        "location": "Islamabad, Pakistan",
+        "period": "Jan 2022 - 2026",
+        "currentSemester": "8th Semester",
+        "cgpa": "3.95",
+        "expectedGraduation": "Feb 2026",
+        "coursework": ["Environmental Biotechnology", "Microbial Biotechnology", "Food Biotechnology", "Biochemical Engineering", "Microbiology", "Molecular Biology", "Virology", "Industrial Biotechnology", "Genomics & Proteomics", "Ecology, Biodiversity & Evolution"]
+      },
+      {
+        "degree": "Higher Secondary Certificate (HSSC) in FSc Pre-medical",
+        "institution": "PAEC Model College Nilore, Islamabad",
+        "location": "Islamabad, Pakistan",
+        "period": "Sep 2019 - Sep 2021",
+        "grade": "A+",
+        "coreSubjects": ["Biology", "Chemistry", "Physics"],
+        "highlights": ["Awarded Gold Medal for Academic Excellence"]
+      }
+    ]
   },
   "experiences": {
     "title": "Experiences",
     "subtitle": "Professional and academic experiences that shaped my journey",
-    "labIntern": "Laboratory Intern",
-    "nih": "National Institutes of Health (NIH), Islamabad - Nutrition Division (WHO Focal Point for Food Safety)",
-    "nihDescription": "Completed internship in food and water chemical and microbiological laboratories. Conducted sample handling and safety testing procedures while maintaining laboratory data and sample records. Performed microbiological testing of food and water samples, including pathogen and coliform detection, while gaining hands-on experience in sample preparation, microbial culture, and water analysis for food safety and water quality monitoring.",
-    "july2025": "July 2025 - Aug 2025"
+    "items": [
+      {
+        "title": "Laboratory Intern",
+        "subtitle": "National Institutes of Health (NIH), Islamabad - Nutrition Division (WHO Focal Point for Food Safety)",
+        "description": "Completed internship in food and water chemical and microbiological laboratories. Conducted sample handling and safety testing procedures while maintaining laboratory data and sample records. Performed microbiological testing of food and water samples, including pathogen and coliform detection, while gaining hands-on experience in sample preparation, microbial culture, and water analysis for food safety and water quality monitoring.",
+        "date": "July 2025 - Aug 2025"
+      }
+    ]
   },
   "projects": {
     "title": "Projects",
     "subtitle": "Research and academic projects demonstrating practical application",
-    "thesis": "Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms",
-    "thesisDesc1": "Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.",
-    "thesisDesc2": "Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR).",
-    "supervisor": "Dr. Bushra Uzair, Associate Professor",
-    "institution": "International Islamic University Islamabad",
+    "supervisor": "Supervisor",
+    "institution": "Institution",
     "completed": "Completed",
-    "defenses": "2025 - Defense Done",
-    "vitiligo": "Understanding Vitiligo: Exploring Self-Esteem & Quality of Life",
-    "vitiligoDesc": "Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.",
-    "immunology": "Immunology Course Project | IIUI",
-    "vitiligo2024": "2024",
-    "bacterial": "Bacterial Isolation from Traditional Fermented Foods",
-    "bacterialDesc": "Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.",
-    "microbial": "Microbial Biotechnology Laboratory Project | IIUI",
-    "period2024": "2024"
+    "items": [
+      {
+        "title": "Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms",
+        "description": ["Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.", "Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR)."],
+        "supervisor": "Dr. Bushra Uzair, Associate Professor",
+        "institution": "International Islamic University Islamabad",
+        "technologies": ["Coliphage Isolation", "Biofilm Assays", "Microbiological Techniques", "Environmental Remediation"],
+        "status": "Completed",
+        "period": "2025 - Defense Done"
+      },
+      {
+        "title": "Understanding Vitiligo: Exploring Self-Esteem & Quality of Life",
+        "description": "Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.",
+        "institution": "Immunology Course Project | IIUI",
+        "technologies": ["Survey Design", "Data Collection", "Psychological Analysis"],
+        "status": "Completed",
+        "period": "2024"
+      },
+      {
+        "title": "Bacterial Isolation from Traditional Fermented Foods",
+        "description": "Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.",
+        "institution": "Microbial Biotechnology Laboratory Project | IIUI",
+        "technologies": ["Serial Dilution", "Bacterial Isolation", "Morphological Analysis"],
+        "status": "Completed",
+        "period": "2024"
+      }
+    ]
   },
   "contact": {
     "title": "Contact Me",
@@ -89,7 +114,7 @@
     "experience": "Experience",
     "projects": "Projects",
     "contact": "Contact",
-    "copyright": "Made with {heart} © {year} Fatima. All rights reserved."
+    "copyright": "Made with heart © 2024 Fatima. All rights reserved."
   },
   "languages": {
     "en": "EN",
