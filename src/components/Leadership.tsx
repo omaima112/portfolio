@@ -2,48 +2,46 @@ import { SectionWrapper } from './SectionWrapper';
 import { Heart, Award, Sparkles } from 'lucide-react';
 import { Slideshow } from './Slideshow';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useTranslation } from 'react-i18next';
 
 export function Leadership() {
-  const leadership = [
-    {
-      title: 'Ambassador & Internee — CLC Creative Leadership Conference 2.0',
-      subtitle: 'Conference Ambassador | Social media, blogs, and publications team',
-      description: [
-        '• Served as conference ambassador while managing social media content for blogs, writing, and publications team.',
-        '• Demonstrated leadership and communication skills by leading essay competition outreach initiative, successfully engaging multiple colleges and coordinating institutional participation to drive student enrollment.'
-      ],
-      date: 'July 2024 - Oct 2024',
-      icon: <Award className="w-6 h-6" />, 
-      slideshow: {
+  const { t } = useTranslation();
+  
+  const iconMap = [<Award className="w-6 h-6" />, <Heart className="w-6 h-6" />, <Sparkles className="w-6 h-6" />];
+  
+  const leadership = (t('leadership.items', { returnObjects: true }) as Array<{
+    title: string;
+    subtitle: string;
+    description: string | string[];
+    date: string;
+  }>).map((item, idx) => {
+    const slideshows: { [key: number]: { images: Array<{ src: string; caption: string }> } } = {
+      0: {
         images: [
           { src: '/website/extracurricualr/14.png', caption: 'Conference opening and welcome' },
           { src: '/website/extracurricualr/17.png', caption: 'Closing session highlights' },
         ],
       },
-    },
-    {
-      title: 'Volunteer — RWS Charity Organization',
-      subtitle: 'Community fundraising and outreach',
-      description: 'Promoted organizational fundraising initiatives and raised donations for underprivileged individuals in the community.',
-      date: 'Sept 2023 - Apr 2024',
-      icon: <Heart className="w-6 h-6" />,
-      image: '/website/extracurricualr/15.png',
-    },
-    {
-      title: 'Volunteer — Scholarship Insights / Global Scholarship Network',
-      subtitle: 'Outreach and speaker coordination',
-      description: 'Conducted outreach to international scholarship recipients and coordinated their participation as guest speakers, enhancing student exposure to global academic pathways.',
-      date: 'Feb 2024 - July 2025',
-      icon: <Sparkles className="w-6 h-6" />,
-      image: '/website/extracurricualr/16.png',
-    },
-  ];
+    };
+
+    const images: { [key: number]: string } = {
+      1: '/website/extracurricualr/15.png',
+      2: '/website/extracurricualr/16.png',
+    };
+
+    return {
+      ...item,
+      icon: iconMap[idx],
+      slideshow: slideshows[idx],
+      image: images[idx],
+    };
+  });
 
   return (
     <SectionWrapper
       id="extracurricular-activities"
-      title="Extracurricular Activities"
-      subtitle="Contributing to communities and leading with purpose"
+      title={t('leadership.title')}
+      subtitle={t('leadership.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-4xl mx-auto space-y-6">

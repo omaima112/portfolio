@@ -2,58 +2,40 @@ import { SectionWrapper } from './SectionWrapper';
 import { InteractiveCard } from './InteractiveCard';
 import { Presentation, Video } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import { useTranslation } from 'react-i18next';
 
 export function Seminars() {
-  const seminars = [
-    {
-      title: 'Breast Cancer Awareness',
-      subtitle: 'Organizer | Oct 2024',
-      description: 'Awareness and educational seminar on breast cancer',
-      icon: <Presentation className="w-6 h-6" />,
-      image: '/website/seminar and workshop/yes.PNG',
-    },
-    {
-      title: 'Biotechnology Career Campus: Finding your Way',
-      subtitle: 'Organizer | 2024',
-      description: 'Career guidance and opportunities in biotechnology',
-      icon: <Presentation className="w-6 h-6" />,
-      image: '/website/seminar and workshop/Capture5.PNG',
-    },
-    {
-      title: 'Translating Bioinformatics Research into Clinical Practices',
-      subtitle: 'Organizer | 2024',
-      description: 'Workshop on applying bioinformatics research to clinical settings',
-      icon: <Presentation className="w-6 h-6" />,
-      image: '/website/seminar and workshop/WhatsApp%20Image%202025-03-11%20at%202.06.00%20AM%20(1).jpeg',
-    },
-    {
-      title: 'International E-Workshop on Molecular Informatics',
-      subtitle: 'IIUI 2024',
-      description: 'Online workshop on molecular informatics techniques',
-      icon: <Video className="w-6 h-6" />,
-      image: '/website/seminar and workshop/6.PNG',
-    },
-    {
-      title: 'Hands-on microbiology workshop',
-      subtitle: 'IIUI 2024',
-      description: 'Practical microbiology laboratory workshop',
-      icon: <Video className="w-6 h-6" />,
-      image: '/website/seminar and workshop/WhatsApp%20Image%202025-12-24%20at%207.48.34%20PM.jpeg',
-    },
-    {
-      title: 'Bioethics and biosafety workshop',
-      subtitle: 'IIUI 2024',
-      description: 'Workshop on bioethics principles and biosafety protocols',
-      icon: <Video className="w-6 h-6" />,
-      image: '/website/seminar and workshop/WhatsApp Image 2025-03-11 at 2.06.00 AM.jpeg',
-    },
+  const { t } = useTranslation();
+  
+  const iconMap = [
+    <Presentation className="w-6 h-6" />, <Presentation className="w-6 h-6" />, <Presentation className="w-6 h-6" />,
+    <Video className="w-6 h-6" />, <Video className="w-6 h-6" />, <Video className="w-6 h-6" />
   ];
+  
+  const images = [
+    '/website/seminar and workshop/yes.PNG',
+    '/website/seminar and workshop/Capture5.PNG',
+    '/website/seminar and workshop/WhatsApp%20Image%202025-03-11%20at%202.06.00%20AM%20(1).jpeg',
+    '/website/seminar and workshop/6.PNG',
+    '/website/seminar and workshop/WhatsApp%20Image%202025-12-24%20at%207.48.34%20PM.jpeg',
+    '/website/seminar and workshop/WhatsApp Image 2025-03-11 at 2.06.00 AM.jpeg'
+  ];
+  
+  const seminars = (t('seminars.items', { returnObjects: true }) as Array<{
+    title: string;
+    subtitle: string;
+    description: string;
+  }>).map((seminar, idx) => ({
+    ...seminar,
+    icon: iconMap[idx],
+    image: images[idx],
+  }));
 
   return (
     <SectionWrapper
       id="seminars"
-      title="Seminars & Workshops"
-      subtitle="Professional development events and continuous learning"
+      title={t('seminars.title')}
+      subtitle={t('seminars.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-6xl mx-auto">

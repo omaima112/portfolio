@@ -2,104 +2,40 @@ import { SectionWrapper } from './SectionWrapper';
 import { Award, CheckCircle } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Badge } from './ui/badge';
+import { useTranslation } from 'react-i18next';
 
 export function Certificates() {
-  const certificates = [
-    {
-      title: 'Bacteria and Chronic Infections',
-      subtitle: 'University of Copenhagen | Coursera',
-      date: '2025',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Infection Biology', 'Host-Pathogen'],
-      image: '/website/certificates/Capture8.PNG',
-    },
-    {
-      title: 'Antimicrobial Resistance: Theory and Methods',
-      subtitle: 'Technical University of Denmark (DTU) | Coursera',
-      date: '2025',
-      icon: <CheckCircle className="w-6 h-6" />,
-      skills: ['AMR', 'Surveillance', 'Lab Methods'],
-      image: '/website/certificates/Capture5.PNG',
-    },
-    {
-      title: 'New Paradigms in Wastewater Management',
-      subtitle: 'Politecnico di Milano | Coursera',
-      date: '2025',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Wastewater', 'Sustainability'],
-      image: '/website/certificates/Capture3.PNG',
-    },
-    {
-      title: 'Algae Biotechnology',
-      subtitle: 'University of California San Diego | Coursera',
-      date: '2025',
-      icon: <CheckCircle className="w-6 h-6" />,
-      skills: ['Algae', 'Biofuels', 'Bioproducts'],
-      image: '/website/certificates/7.PNG',
-    },
-    {
-      title: 'Social Dimensions of Antimicrobial Resistance',
-      subtitle: 'University of Amsterdam | Coursera',
-      date: '2025',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Public Health', 'Policy', 'AMR'],
-      image: '/website/certificates/Capture6.PNG',
-    },
-    {
-      title: 'Circular Economy: Sustainable Materials Management',
-      subtitle: 'Lund University | Coursera',
-      date: '2025',
-      icon: <CheckCircle className="w-6 h-6" />,
-      skills: ['Circular Economy', 'Sustainability'],
-      image: '/website/certificates/Capture9.PNG',
-    },
-    {
-      title: 'Environmental Health: The Foundation of Global Public Health',
-      subtitle: 'University of Michigan | Coursera',
-      date: '2025',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Environmental Health', 'Risk'],
-      image: '/website/certificates/Capture4.PNG',
-    },
-    {
-      title: 'Whole Genome Sequencing of Bacterial Genomes: Tools and Applications',
-      subtitle: 'Technical University of Denmark (DTU) | Coursera',
-      date: '2025',
-      icon: <CheckCircle className="w-6 h-6" />,
-      skills: ['WGS', 'Bioinformatics', 'Surveillance'],
-      image: '/website/certificates/Capture2.PNG',
-    },
-    {
-      title: 'Scientific Research Writing Course',
-      subtitle: 'Multiomics | 2023',
-      date: '2023',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Sci Writing', 'Communication'],
-      image: '/website/certificates/Capture10.PNG',
-    },
-    {
-      title: 'Aspire Leaders Program',
-      subtitle: 'Aspire Institute | 2025',
-      date: '2025',
-      icon: <CheckCircle className="w-6 h-6" />,
-      skills: ['Leadership', 'Collaboration'],
-      image: '/website/certificates/Capture1.PNG',
-    },
-    {
-      title: 'Fundamental Skills in Bioinformatics',
-      subtitle: 'Ongoing',
-      date: 'Ongoing',
-      icon: <Award className="w-6 h-6" />,
-      skills: ['Bioinformatics', 'Sequence Analysis'],
-      // No image while ongoing
-    },
+  const { t } = useTranslation();
+  
+  const iconMap = [
+    <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />,
+    <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />,
+    <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />
   ];
+  
+  const images = [
+    '/website/certificates/Capture8.PNG', '/website/certificates/Capture5.PNG', '/website/certificates/Capture3.PNG',
+    '/website/certificates/7.PNG', '/website/certificates/Capture6.PNG', '/website/certificates/Capture9.PNG',
+    '/website/certificates/Capture4.PNG', '/website/certificates/Capture2.PNG', '/website/certificates/Capture10.PNG',
+    '/website/certificates/Capture1.PNG'
+  ];
+  
+  const certificates = (t('certificates.items', { returnObjects: true }) as Array<{
+    title: string;
+    subtitle: string;
+    date: string;
+    skills: string[];
+  }>).map((cert, idx) => ({
+    ...cert,
+    icon: iconMap[idx],
+    image: images[idx],
+  }));
 
   return (
     <SectionWrapper
       id="certificates"
-      title="Certificates"
-      subtitle="Professional certifications and specialized training"
+      title={t('certificates.title')}
+      subtitle={t('certificates.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-6xl mx-auto">
@@ -118,7 +54,7 @@ export function Certificates() {
                   />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-white">
-                    <span className="font-heading text-[#5A2653]">Ongoing</span>
+                    <span className="font-heading text-[#5A2653]">{t('certificates.ongoing') || 'Ongoing'}</span>
                   </div>
                 )}
                 <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2">
