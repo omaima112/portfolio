@@ -77,22 +77,38 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
                       className="inline-block z-[9999] bg-white rounded-lg shadow-lg border border-[#EED1E6] max-h-[60vh] overflow-auto origin-top-right"
                       style={{ willChange: 'transform, opacity', width: '20rem', maxWidth: '90vw' }}
                     >
-                    {pages.map((p) => (
-                      <DropdownMenu.Item asChild key={p}>
-                        <button
-                          role="menuitem"
-                          onClick={() => {
-                            onNavigate(p);
-                            setIsMenuOpen(false);
-                          }}
-                          className={`text-left px-3 py-2 rounded-md w-full hover:bg-[#F6E1F0] text-[#5A2653] font-heading transition-colors outline-none focus:bg-[#F6E1F0] focus:ring-2 focus:ring-[#A86A9A]/30 ${
-                            currentPage === p ? 'font-semibold bg-[#F6E1F0]' : ''
-                          }`}
-                        >
-                          {p}
-                        </button>
-                      </DropdownMenu.Item>
-                    ))}
+                    {pages.map((p) => {
+                      const pageMap: { [key: string]: string } = {
+                        'Homepage': t('pages.homepage'),
+                        'About Me': t('pages.aboutMe'),
+                        'Experiences': t('pages.experiences'),
+                        'Education': t('pages.education'),
+                        'Extracurricular Activities': t('pages.leadership'),
+                        'Certificates': t('pages.certificates'),
+                        'Seminars & Workshops': t('pages.seminars'),
+                        'Poster Presentations': t('pages.posters'),
+                        'Projects': t('pages.projects'),
+                        'Awards': t('pages.awards'),
+                        'Contact': t('pages.contact'),
+                      };
+                      
+                      return (
+                        <DropdownMenu.Item asChild key={p}>
+                          <button
+                            role="menuitem"
+                            onClick={() => {
+                              onNavigate(p);
+                              setIsMenuOpen(false);
+                            }}
+                            className={`text-left px-3 py-2 rounded-md w-full hover:bg-[#F6E1F0] text-[#5A2653] font-heading transition-colors outline-none focus:bg-[#F6E1F0] focus:ring-2 focus:ring-[#A86A9A]/30 ${
+                              currentPage === p ? 'font-semibold bg-[#F6E1F0]' : ''
+                            }`}
+                          >
+                            {pageMap[p] || p}
+                          </button>
+                        </DropdownMenu.Item>
+                      );
+                    })}
                   </motion.div>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>

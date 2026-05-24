@@ -2,35 +2,42 @@ import { SectionWrapper } from './SectionWrapper';
 import { FileText, TrendingUp } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Slideshow } from './Slideshow';
+import { useTranslation } from 'react-i18next';
 
 export function PosterPresentations() {
-  const posters = [
-    {
-      title: 'Industrial Biotechnology Applications and Innovations',
-      conference: 'Innovent 2025 | Inter-university Biotech Competition',
-      description: 'Led 4-member team to 2nd place finish with cash prize. Designed poster content and coordinated presentation strategy. Served as primary presenter for the project.',
-      award: '2nd Place',
-      slideshow: {
+  const { t } = useTranslation();
+  
+  const posters = (t('posters.items', { returnObjects: true }) as Array<{
+    title: string;
+    conference: string;
+    description: string;
+    award?: string;
+  }>).map((poster, idx) => {
+    const slideshows: { [key: number]: { images: Array<{ src: string; caption: string }> } } = {
+      0: {
         images: [
           { src: '/website/poster presentation/9.png', caption: 'Poster design and presentation' },
           { src: '/website/poster presentation/10.png', caption: 'Team coordination and Q&A' },
-          
         ],
       },
-    },
-    {
-      title: 'Research Methodology in Biological Sciences',
-      conference: 'University Poster Presentation, 2024',
-      description: 'Led team of 6 members, coordinating research, design, and presentation strategies. Synthesized and visualized complex research methodologies from published literature. Delivered presentation to academic panel as part of research exposure training.',
-      image: '/website/poster presentation/11.png',
-    },
-  ];
+    };
+
+    const images: { [key: number]: string } = {
+      1: '/website/poster presentation/11.png',
+    };
+
+    return {
+      ...poster,
+      slideshow: slideshows[idx],
+      image: images[idx],
+    };
+  });
 
   return (
     <SectionWrapper
       id="posters"
-      title="Poster Presentations"
-      subtitle="Research showcased at academic conferences"
+      title={t('posters.title')}
+      subtitle={t('posters.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-6xl mx-auto">
