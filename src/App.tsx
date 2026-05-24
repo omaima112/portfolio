@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-
+import { useLanguage } from './context/LanguageContext';
 import { AnimatePresence, motion } from 'motion/react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
@@ -45,6 +45,7 @@ const pageOrder: PageKey[] = [
 ];
 
 export default function App() {
+  const { dir } = useLanguage();
   const [currentPage, setCurrentPage] = useState<PageKey>('Homepage');
   // Mobile paw overlay state
   const [pawPos, setPawPos] = useState<{ x: number; y: number } | null>(null);
@@ -100,7 +101,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white flex flex-col">
+    <div className="min-h-screen overflow-x-hidden bg-white flex flex-col" dir={dir}>
       {/* Mobile paw overlay */}
       {pawPos && (
         <img

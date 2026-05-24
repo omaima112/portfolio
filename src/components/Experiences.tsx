@@ -2,8 +2,11 @@ import { SectionWrapper } from './SectionWrapper';
 import { InteractiveCard } from './InteractiveCard';
 import { Briefcase } from 'lucide-react';
 import { Slideshow } from './Slideshow';
+import { useTranslation } from 'react-i18next';
 
 export function Experiences() {
+  const { t } = useTranslation();
+
   const experiences = [
     {
       title: 'Laboratory Intern',
@@ -21,8 +24,8 @@ export function Experiences() {
   return (
     <SectionWrapper
       id="experiences"
-      title="Experiences"
-      subtitle="Professional and academic experiences that shaped my journey"
+      title={t('experiences.title')}
+      subtitle={t('experiences.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-4xl mx-auto space-y-6">
