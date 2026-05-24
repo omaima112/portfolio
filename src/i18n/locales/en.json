@@ -1,0 +1,309 @@
+{
+  "header": {
+    "portfolio": "Fatima's Portfolio",
+    "home": "Home"
+  },
+  "hero": {
+    "degree": "BS Biotechnology",
+    "quote": "\"Science and everyday life cannot and should not be separated.\" — Rosalind Franklin",
+    "bio": "Biotechnology undergraduate exploring environmental microbiology, antimicrobial resistance, and phage-based biocontrol strategies.",
+    "getInTouch": "Get In Touch",
+    "viewProjects": "View Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "A glimpse into my academic journey and aspirations",
+    "paragraph1": "I am currently pursuing a Bachelor of Science in Biotechnology and am in my final semester, with a strong academic interest in the intersection of microbiology, environmental health, and sustainable biotechnological solutions.",
+    "paragraph2": "My final year research project, which investigates phage-based biocontrol strategies against multidrug-resistant bacterial biofilms, has allowed me to explore biological alternatives to conventional antimicrobial approaches.",
+    "paragraph3": "I am motivated to pursue advanced research training that bridges fundamental microbiology and molecular biology with real-world environmental challenges, particularly those related to water quality, antimicrobial resistance, and public health.",
+    "researchInterests": "Research Interests",
+    "researchItems": ["Environmental Microbiology", "Antimicrobial Resistance", "Phage Biology", "Biofilm Engineering"],
+    "beyondScience": "Beyond Science",
+    "beyondScienceText": "Interest in visual storytelling, digital design, and creative projects beyond the laboratory."
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic foundation and achievements",
+    "cgpa": "CGPA",
+    "grade": "Grade",
+    "expectedGraduation": "Expected Graduation",
+    "relevantCoursework": "Relevant Coursework",
+    "coreSubjects": "Core Subjects",
+    "items": [
+      {
+        "degree": "Bachelor of Science in Biotechnology",
+        "institution": "International Islamic University, Islamabad",
+        "location": "Islamabad, Pakistan",
+        "period": "Jan 2022 - 2026",
+        "currentSemester": "8th Semester",
+        "cgpa": "3.95",
+        "expectedGraduation": "Feb 2026",
+        "coursework": ["Environmental Biotechnology", "Microbial Biotechnology", "Food Biotechnology", "Biochemical Engineering", "Microbiology", "Molecular Biology", "Virology", "Industrial Biotechnology", "Genomics & Proteomics", "Ecology, Biodiversity & Evolution"]
+      },
+      {
+        "degree": "Higher Secondary Certificate (HSSC) in FSc Pre-medical",
+        "institution": "PAEC Model College Nilore, Islamabad",
+        "location": "Islamabad, Pakistan",
+        "period": "Sep 2019 - Sep 2021",
+        "grade": "A+",
+        "coreSubjects": ["Biology", "Chemistry", "Physics"],
+        "highlights": ["Awarded Gold Medal for Academic Excellence"]
+      }
+    ]
+  },
+  "experiences": {
+    "title": "Experiences",
+    "subtitle": "Professional and academic experiences that shaped my journey",
+    "items": [
+      {
+        "title": "Laboratory Intern",
+        "subtitle": "National Institutes of Health (NIH), Islamabad - Nutrition Division (WHO Focal Point for Food Safety)",
+        "description": "Completed internship in food and water chemical and microbiological laboratories. Conducted sample handling and safety testing procedures while maintaining laboratory data and sample records. Performed microbiological testing of food and water samples, including pathogen and coliform detection, while gaining hands-on experience in sample preparation, microbial culture, and water analysis for food safety and water quality monitoring.",
+        "date": "July 2025 - Aug 2025"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Research and academic projects demonstrating practical application",
+    "supervisor": "Supervisor",
+    "institution": "Institution",
+    "completed": "Completed",
+    "items": [
+      {
+        "title": "Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms",
+        "description": ["Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.", "Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR)."],
+        "supervisor": "Dr. Bushra Uzair, Associate Professor",
+        "institution": "International Islamic University Islamabad",
+        "technologies": ["Coliphage Isolation", "Biofilm Assays", "Microbiological Techniques", "Environmental Remediation"],
+        "status": "Completed",
+        "period": "2025 - Defense Done"
+      },
+      {
+        "title": "Understanding Vitiligo: Exploring Self-Esteem & Quality of Life",
+        "description": "Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.",
+        "institution": "Immunology Course Project | IIUI",
+        "technologies": ["Survey Design", "Data Collection", "Psychological Analysis"],
+        "status": "Completed",
+        "period": "2024"
+      },
+      {
+        "title": "Bacterial Isolation from Traditional Fermented Foods",
+        "description": "Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.",
+        "institution": "Microbial Biotechnology Laboratory Project | IIUI",
+        "technologies": ["Serial Dilution", "Bacterial Isolation", "Morphological Analysis"],
+        "status": "Completed",
+        "period": "2024"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Let's connect and discuss opportunities",
+    "getInTouchTitle": "Get In Touch",
+    "message": "I'm always open to discussing research opportunities, collaborations, or any questions you may have about my work.",
+    "email": "fatima.mushtaq40@gmail.com",
+    "phone": "+92 330 5865867",
+    "location": "Islamabad, Pakistan",
+    "linkedin": "linkedin.com/in/fatima"
+  },
+  "footer": {
+    "name": "Fatima",
+    "degree": "BS Biotechnology",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "copyright": "© 2024 Fatima. All rights reserved."
+  },
+  "awards": {
+    "title": "Awards & Achievements",
+    "subtitle": "Recognition for academic excellence and contributions",
+    "items": [
+      {
+        "title": "2nd Position",
+        "subtitle": "Inter-University Innovent 2025",
+        "description": "Secured second position at the Inter-University Innovent 2025 competition.",
+        "date": "2025"
+      },
+      {
+        "title": "Merit-Based Laptop Award",
+        "subtitle": "IIUI 2023",
+        "description": "Received a merit-based laptop award from IIUI.",
+        "date": "2023"
+      },
+      {
+        "title": "Gold Medalist",
+        "subtitle": "Highschool | 2022",
+        "description": "Awarded gold medal distinction in high school.",
+        "date": "2022"
+      }
+    ]
+  },
+  "certificates": {
+    "title": "Certificates",
+    "subtitle": "Professional certifications and specialized training",
+    "items": [
+      {
+        "title": "Bacteria and Chronic Infections",
+        "subtitle": "University of Copenhagen | Coursera",
+        "date": "2025",
+        "skills": ["Infection Biology", "Host-Pathogen"]
+      },
+      {
+        "title": "Antimicrobial Resistance: Theory and Methods",
+        "subtitle": "Technical University of Denmark (DTU) | Coursera",
+        "date": "2025",
+        "skills": ["AMR", "Surveillance", "Lab Methods"]
+      },
+      {
+        "title": "New Paradigms in Wastewater Management",
+        "subtitle": "Politecnico di Milano | Coursera",
+        "date": "2025",
+        "skills": ["Wastewater", "Sustainability"]
+      },
+      {
+        "title": "Algae Biotechnology",
+        "subtitle": "University of California San Diego | Coursera",
+        "date": "2025",
+        "skills": ["Algae", "Biofuels", "Bioproducts"]
+      },
+      {
+        "title": "Social Dimensions of Antimicrobial Resistance",
+        "subtitle": "University of Amsterdam | Coursera",
+        "date": "2025",
+        "skills": ["Public Health", "Policy", "AMR"]
+      },
+      {
+        "title": "Circular Economy: Sustainable Materials Management",
+        "subtitle": "Lund University | Coursera",
+        "date": "2025",
+        "skills": ["Circular Economy", "Sustainability"]
+      },
+      {
+        "title": "Environmental Health: The Foundation of Global Public Health",
+        "subtitle": "University of Michigan | Coursera",
+        "date": "2025",
+        "skills": ["Environmental Health", "Risk"]
+      },
+      {
+        "title": "Whole Genome Sequencing of Bacterial Genomes: Tools and Applications",
+        "subtitle": "Technical University of Denmark (DTU) | Coursera",
+        "date": "2025",
+        "skills": ["WGS", "Bioinformatics", "Surveillance"]
+      },
+      {
+        "title": "Scientific Research Writing Course",
+        "subtitle": "Multiomics | 2023",
+        "date": "2023",
+        "skills": ["Sci Writing", "Communication"]
+      },
+      {
+        "title": "Aspire Leaders Program",
+        "subtitle": "Aspire Institute | 2025",
+        "date": "2025",
+        "skills": ["Leadership", "Collaboration"]
+      },
+      {
+        "title": "Fundamental Skills in Bioinformatics",
+        "subtitle": "Ongoing",
+        "date": "Ongoing",
+        "skills": ["Bioinformatics", "Sequence Analysis"]
+      }
+    ]
+  },
+  "seminars": {
+    "title": "Seminars & Workshops",
+    "subtitle": "Professional development events and continuous learning",
+    "items": [
+      {
+        "title": "Breast Cancer Awareness",
+        "subtitle": "Organizer | Oct 2024",
+        "description": "Awareness and educational seminar on breast cancer"
+      },
+      {
+        "title": "Biotechnology Career Campus: Finding your Way",
+        "subtitle": "Organizer | 2024",
+        "description": "Career guidance and opportunities in biotechnology"
+      },
+      {
+        "title": "Translating Bioinformatics Research into Clinical Practices",
+        "subtitle": "Organizer | 2024",
+        "description": "Workshop on applying bioinformatics research to clinical settings"
+      },
+      {
+        "title": "International E-Workshop on Molecular Informatics",
+        "subtitle": "IIUI 2024",
+        "description": "Online workshop on molecular informatics techniques"
+      },
+      {
+        "title": "Hands-on microbiology workshop",
+        "subtitle": "IIUI 2024",
+        "description": "Practical microbiology laboratory workshop"
+      },
+      {
+        "title": "Bioethics and biosafety workshop",
+        "subtitle": "IIUI 2024",
+        "description": "Workshop on bioethics principles and biosafety protocols"
+      }
+    ]
+  },
+  "posters": {
+    "title": "Poster Presentations",
+    "subtitle": "Research showcased at academic conferences",
+    "items": [
+      {
+        "title": "Industrial Biotechnology Applications and Innovations",
+        "conference": "Innovent 2025 | Inter-university Biotech Competition",
+        "description": "Led 4-member team to 2nd place finish with cash prize. Designed poster content and coordinated presentation strategy. Served as primary presenter for the project.",
+        "award": "2nd Place"
+      },
+      {
+        "title": "Research Methodology in Biological Sciences",
+        "conference": "University Poster Presentation, 2024",
+        "description": "Led team of 6 members, coordinating research, design, and presentation strategies. Synthesized and visualized complex research methodologies from published literature. Delivered presentation to academic panel as part of research exposure training."
+      }
+    ]
+  },
+  "leadership": {
+    "title": "Extracurricular Activities",
+    "subtitle": "Contributing to communities and leading with purpose",
+    "items": [
+      {
+        "title": "Ambassador & Internee — CLC Creative Leadership Conference 2.0",
+        "subtitle": "Conference Ambassador | Social media, blogs, and publications team",
+        "description": ["Served as conference ambassador while managing social media content for blogs, writing, and publications team.", "Demonstrated leadership and communication skills by leading essay competition outreach initiative, successfully engaging multiple colleges and coordinating institutional participation to drive student enrollment."],
+        "date": "July 2024 - Oct 2024"
+      },
+      {
+        "title": "Volunteer — RWS Charity Organization",
+        "subtitle": "Community fundraising and outreach",
+        "description": "Promoted organizational fundraising initiatives and raised donations for underprivileged individuals in the community.",
+        "date": "Sept 2023 - Apr 2024"
+      },
+      {
+        "title": "Volunteer — Scholarship Insights / Global Scholarship Network",
+        "subtitle": "Outreach and speaker coordination",
+        "description": "Conducted outreach to international scholarship recipients and coordinated their participation as guest speakers, enhancing student exposure to global academic pathways.",
+        "date": "Feb 2024 - July 2025"
+      }
+    ]
+  },
+  "pages": {
+    "homepage": "Home",
+    "aboutMe": "About Me",
+    "experiences": "Experiences",
+    "education": "Education",
+    "leadership": "Extracurricular",
+    "certificates": "Certificates",
+    "seminars": "Seminars",
+    "posters": "Posters",
+    "projects": "Projects",
+    "awards": "Awards",
+    "contact": "Contact"
+  },
+  "languages": {
+    "en": "EN",
+    "ar": "العربية"
+  }
+}
