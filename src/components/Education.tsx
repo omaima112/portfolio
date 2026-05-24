@@ -1,7 +1,10 @@
 import { SectionWrapper } from './SectionWrapper';
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function Education() {
+  const { t } = useTranslation();
+
   const education = [
     {
       degree: 'Bachelor of Science in Biotechnology',
@@ -40,8 +43,8 @@ export function Education() {
   return (
     <SectionWrapper
       id="education"
-      title="Education"
-      subtitle="My academic foundation and achievements"
+      title={t('education.title')}
+      subtitle={t('education.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-4xl mx-auto">

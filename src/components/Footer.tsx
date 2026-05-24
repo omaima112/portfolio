@@ -1,10 +1,12 @@
 import { Heart, Linkedin, Mail } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface FooterProps {
   onNavigate: (page: 'About Me' | 'Experiences' | 'Projects' | 'Contact') => void;
 }
 
 export function Footer({ onNavigate }: FooterProps) {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,8 +15,8 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left Side */}
           <div className="text-center md:text-left">
-            <h3 className="font-heading mb-2">Fatima</h3>
-            <p className="font-body opacity-90">BS Biotechnology</p>
+            <h3 className="font-heading mb-2">{t('footer.name')}</h3>
+            <p className="font-body opacity-90">{t('footer.degree')}</p>
           </div>
 
           {/* Center - Links */}
@@ -24,28 +26,28 @@ export function Footer({ onNavigate }: FooterProps) {
               onClick={() => onNavigate('About Me')}
               className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
             >
-              About
+              {t('footer.about')}
             </button>
             <button
               type="button"
               onClick={() => onNavigate('Experiences')}
               className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
             >
-              Experience
+              {t('footer.experience')}
             </button>
             <button
               type="button"
               onClick={() => onNavigate('Projects')}
               className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
             >
-              Projects
+              {t('footer.projects')}
             </button>
             <button
               type="button"
               onClick={() => onNavigate('Contact')}
               className="font-heading hover:text-[#EED1E6] transition-colors duration-200"
             >
-              Contact
+              {t('footer.contact')}
             </button>
           </div>
 

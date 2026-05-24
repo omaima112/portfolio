@@ -2,8 +2,11 @@ import { SectionWrapper } from './SectionWrapper';
 import { Dna, Microscope, HeartPulse } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Slideshow } from './Slideshow';
+import { useTranslation } from 'react-i18next';
 
 export function Projects() {
+  const { t } = useTranslation();
+
   const projects = [
     {
       title: 'Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms',
@@ -47,8 +50,8 @@ export function Projects() {
   return (
     <SectionWrapper
       id="projects"
-      title="Projects"
-      subtitle="Research and academic projects demonstrating practical application"
+      title={t('projects.title')}
+      subtitle={t('projects.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-6xl mx-auto">

@@ -1,0 +1,98 @@
+{
+  "header": {
+    "portfolio": "Fatima's Portfolio",
+    "home": "Home"
+  },
+  "hero": {
+    "degree": "BS Biotechnology",
+    "quote": "\"Science and everyday life cannot and should not be separated.\" — Rosalind Franklin",
+    "bio": "Biotechnology undergraduate exploring environmental microbiology, antimicrobial resistance, and phage-based biocontrol strategies.",
+    "getInTouch": "Get In Touch",
+    "viewProjects": "View Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "A glimpse into my academic journey and aspirations",
+    "paragraph1": "I am currently pursuing a Bachelor of Science in Biotechnology and am in my final semester, with a strong academic interest in the intersection of microbiology, environmental health, and sustainable biotechnological solutions.",
+    "paragraph2": "My final year research project, which investigates phage-based biocontrol strategies against multidrug-resistant bacterial biofilms, has allowed me to explore biological alternatives to conventional antimicrobial approaches.",
+    "paragraph3": "I am motivated to pursue advanced research training that bridges fundamental microbiology and molecular biology with real-world environmental challenges, particularly those related to water quality, antimicrobial resistance, and public health.",
+    "researchInterests": "Research Interests",
+    "beyondScience": "Beyond Science",
+    "beyondScienceText": "Interest in visual storytelling, digital design, and creative projects beyond the laboratory."
+  },
+  "education": {
+    "title": "Education",
+    "subtitle": "My academic foundation and achievements",
+    "degree": "Degree",
+    "institution": "Institution",
+    "location": "Location",
+    "period": "Period",
+    "cgpa": "CGPA",
+    "grade": "Grade",
+    "currentSemester": "Current Semester",
+    "expectedGraduation": "Expected Graduation",
+    "relevantCoursework": "Relevant Coursework",
+    "coreSubjects": "Core Subjects",
+    "bs": "Bachelor of Science in Biotechnology",
+    "iiui": "International Islamic University, Islamabad",
+    "islamabad": "Islamabad, Pakistan",
+    "bsperiod": "Jan 2022 - 2026",
+    "semester8": "8th Semester",
+    "feb2026": "Feb 2026",
+    "hssc": "Higher Secondary Certificate (HSSC) in FSc Pre-medical",
+    "paec": "PAEC Model College Nilore, Islamabad",
+    "sep2019": "Sep 2019 - Sep 2021",
+    "aplus": "A+",
+    "goldMedal": "Awarded Gold Medal for Academic Excellence"
+  },
+  "experiences": {
+    "title": "Experiences",
+    "subtitle": "Professional and academic experiences that shaped my journey",
+    "labIntern": "Laboratory Intern",
+    "nih": "National Institutes of Health (NIH), Islamabad - Nutrition Division (WHO Focal Point for Food Safety)",
+    "nihDescription": "Completed internship in food and water chemical and microbiological laboratories. Conducted sample handling and safety testing procedures while maintaining laboratory data and sample records. Performed microbiological testing of food and water samples, including pathogen and coliform detection, while gaining hands-on experience in sample preparation, microbial culture, and water analysis for food safety and water quality monitoring.",
+    "july2025": "July 2025 - Aug 2025"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Research and academic projects demonstrating practical application",
+    "thesis": "Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms",
+    "thesisDesc1": "Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.",
+    "thesisDesc2": "Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR).",
+    "supervisor": "Dr. Bushra Uzair, Associate Professor",
+    "institution": "International Islamic University Islamabad",
+    "completed": "Completed",
+    "defenses": "2025 - Defense Done",
+    "vitiligo": "Understanding Vitiligo: Exploring Self-Esteem & Quality of Life",
+    "vitiligoDesc": "Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.",
+    "immunology": "Immunology Course Project | IIUI",
+    "vitiligo2024": "2024",
+    "bacterial": "Bacterial Isolation from Traditional Fermented Foods",
+    "bacterialDesc": "Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.",
+    "microbial": "Microbial Biotechnology Laboratory Project | IIUI",
+    "period2024": "2024"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "subtitle": "Let's connect and discuss opportunities",
+    "getInTouchTitle": "Get In Touch",
+    "message": "I'm always open to discussing research opportunities, collaborations, or any questions you may have about my work.",
+    "email": "fatima.mushtaq40@gmail.com",
+    "phone": "+92 330 5865867",
+    "location": "Islamabad, Pakistan",
+    "linkedin": "linkedin.com/in/fatima"
+  },
+  "footer": {
+    "name": "Fatima",
+    "degree": "BS Biotechnology",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact",
+    "copyright": "Made with {heart} © {year} Fatima. All rights reserved."
+  },
+  "languages": {
+    "en": "EN",
+    "ar": "العربية"
+  }
+}

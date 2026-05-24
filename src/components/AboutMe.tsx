@@ -1,6 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { SectionWrapper } from './SectionWrapper';
 
 export function AboutMe() {
+  const { t } = useTranslation();
+
   const researchInterests = [
     'Coliphages',
     'Antimicrobial Resistance',
@@ -16,8 +19,8 @@ export function AboutMe() {
   return (
     <SectionWrapper
       id="about"
-      title="About Me"
-      subtitle="A glimpse into my academic journey and aspirations"
+      title={t('about.title')}
+      subtitle={t('about.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-4xl mx-auto">
@@ -28,15 +31,15 @@ export function AboutMe() {
             
 
             <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
-              I am currently pursuing a Bachelor of Science in Biotechnology and am in my final semester, with a strong academic interest in the intersection of microbiology, environmental health, and sustainable biotechnological solutions.
+              {t('about.paragraph1')}
             </p>
 
             <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
-              My final year research project, which investigates phage-based biocontrol strategies against multidrug-resistant bacterial biofilms, has allowed me to explore biological alternatives to conventional antimicrobial approaches.
+              {t('about.paragraph2')}
             </p>
 
             <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
-              I am motivated to pursue advanced research training that bridges fundamental microbiology and molecular biology with real-world environmental challenges, particularly those related to water quality, antimicrobial resistance, and public health.
+              {t('about.paragraph3')}
             </p>
 
             {/* Headings removed from text; shown in cards below */}
@@ -49,7 +52,7 @@ export function AboutMe() {
           <div className="space-y-6">
             {/* Research Interests Section */}
             <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
-              <h4 className="font-heading text-[#5A2653] text-xl mb-3">Research Interests</h4>
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">{t('about.researchInterests')}</h4>
               <div className="flex flex-wrap gap-2">
                 {researchInterests.map((item, idx) => (
                   <span key={idx} className="px-3 py-1 bg-[#F6E1F0] text-[#5A2653] rounded-full font-heading text-sm">
@@ -61,9 +64,9 @@ export function AboutMe() {
 
             {/* Beyond Science Section */}
             <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
-              <h4 className="font-heading text-[#5A2653] text-xl mb-3">Beyond Science</h4>
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">{t('about.beyondScience')}</h4>
               <p className="font-body text-gray-700 text-base md:text-lg leading-relaxed">
-                Interest in visual storytelling, digital design, and creative projects beyond the laboratory.
+                {t('about.beyondScienceText')}
               </p>
             </div>
           </div>

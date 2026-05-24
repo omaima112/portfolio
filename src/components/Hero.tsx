@@ -1,4 +1,5 @@
 import { Mail } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface HeroProps {
@@ -6,6 +7,7 @@ interface HeroProps {
 }
 
 export function Hero({ onNavigate }: HeroProps) {
+  const { t } = useTranslation();
   return (
   <section className="relative overflow-hidden bg-gradient-to-br from-[#F6E1F0] via-[#EED1E6] to-white min-h-screen flex items-center py-20 md:py-32">
       <div className="container mx-auto px-4">
@@ -20,7 +22,7 @@ export function Hero({ onNavigate }: HeroProps) {
               />
             </div>
             <div className="absolute -bottom-4 -right-4 bg-[#5A2653] text-white px-4 py-2 rounded-full shadow-lg font-heading">
-              BS Biotechnology
+              {t('hero.degree')}
             </div>
           </div>
 
@@ -40,11 +42,11 @@ export function Hero({ onNavigate }: HeroProps) {
 
 
             <p className="font-body italic text-[#7E3F74] text-lg mb-6">
-              "Science and everyday life cannot and should not be separated." — Rosalind Franklin
+              {t('hero.quote')}
             </p>
 
             <p className="font-body text-gray-700 mb-8 max-w-2xl text-lg">
-              Biotechnology undergraduate exploring environmental microbiology, antimicrobial resistance, and phage-based biocontrol strategies.</p>
+              {t('hero.bio')}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <button
@@ -52,13 +54,13 @@ export function Hero({ onNavigate }: HeroProps) {
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#5A2653] hover:bg-[#7E3F74] text-white rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-heading"
               >
                 <Mail className="w-5 h-5" />
-                Get In Touch
+                {t('hero.getInTouch')}
               </button>
               <button
                 onClick={() => onNavigate('Projects')}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-[#F6E1F0] text-[#5A2653] border-2 border-[#5A2653] rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 font-heading"
               >
-                View Projects
+                {t('hero.viewProjects')}
               </button>
             </div>
           </div>

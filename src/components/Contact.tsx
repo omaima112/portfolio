@@ -4,7 +4,9 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 export function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -29,8 +31,8 @@ export function Contact() {
   return (
     <SectionWrapper
       id="contact"
-      title="Contact Me"
-      subtitle="Let's connect and discuss opportunities"
+      title={t('contact.title')}
+      subtitle={t('contact.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
       <div className="max-w-5xl mx-auto">
@@ -38,10 +40,9 @@ export function Contact() {
           {/* Contact Information */}
             <div className="space-y-3 w-full">
               <div className="bg-gradient-to-br from-[#5A2653] to-[#7E3F74] rounded-xl p-8 text-white mx-auto max-w-md w-full">
-              <h3 className="font-heading mb-6">Get In Touch</h3>
+              <h3 className="font-heading mb-6">{t('contact.getInTouchTitle')}</h3>
               <p className="font-body mb-8 opacity-90">
-                I'm always open to discussing research opportunities, collaborations, 
-                or any questions you may have about my work.
+                {t('contact.message')}
               </p>
 
               <div className="space-y-4">
@@ -63,7 +64,7 @@ export function Contact() {
 
                 <div className="flex items-center gap-3 p-3 bg-white/10 rounded-lg">
                   <MapPin className="w-5 h-5" />
-                  <span className="font-body">Islamabad, Pakistan</span>
+                  <span className="font-body">{t('contact.location')}</span>
                 </div>
 
                 <a

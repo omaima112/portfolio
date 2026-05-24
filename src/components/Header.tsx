@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Linkedin, Menu, X } from 'lucide-react';
+import { Linkedin, Menu, X, Globe } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
+import { useLanguage } from '../context/LanguageContext';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { Button } from './ui/button';
 
@@ -12,6 +14,8 @@ interface HeaderProps {
 
 export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   return (
     <header className="sticky top-0 z-50 glassmorphism shadow-sm">
@@ -24,7 +28,7 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
             aria-label="Go to home"
           >
             <span className="font-heading text-[#5A2653] transition-all duration-300 hover:opacity-80">
-              Fatima's Portfolio
+              {t('header.portfolio')}
             </span>
           </button>
 
@@ -32,6 +36,15 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-3 relative">
+            <button
+              onClick={toggleLanguage}
+              className="p-2 rounded-lg transition-all duration-300 hover:bg-[#F6E1F0] text-[#5A2653] font-heading font-semibold text-sm"
+              aria-label={`Switch to ${language === 'en' ? 'Arabic' : 'English'}`}
+              title={`Switch to ${language === 'en' ? 'العربية' : 'English'}`}
+            >
+              {language === 'en' ? 'العربية' : 'EN'}
+            </button>
+
             <a
               href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
               target="_blank"
