@@ -7,19 +7,19 @@ import { useTranslation } from 'react-i18next';
 export function Experiences() {
   const { t } = useTranslation();
 
-  const experiences = [
-    {
-      title: 'Laboratory Intern',
-      subtitle: 'National Institutes of Health (NIH), Islamabad - Nutrition Division (WHO Focal Point for Food Safety)',
-      description: 'Completed internship in food and water chemical and microbiological laboratories. Conducted sample handling and safety testing procedures while maintaining laboratory data and sample records. Performed microbiological testing of food and water samples, including pathogen and coliform detection, while gaining hands-on experience in sample preparation, microbial culture, and water analysis for food safety and water quality monitoring.',
-      date: 'July 2025 - Aug 2025',
-      icon: <Briefcase className="w-6 h-6" />,
-      images: [
-        '/website/Experience/12.png',
-        '/website/Experience/13.png',
-      ],
-    },
-  ];
+  const experiences = (t('experiences.items', { returnObjects: true }) as Array<{
+    title: string;
+    subtitle: string;
+    description: string;
+    date: string;
+  }>).map((exp) => ({
+    ...exp,
+    icon: <Briefcase className="w-6 h-6" />,
+    images: [
+      '/website/Experience/12.png',
+      '/website/Experience/13.png',
+    ],
+  }));
 
   return (
     <SectionWrapper

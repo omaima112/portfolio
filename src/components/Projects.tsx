@@ -7,45 +7,32 @@ import { useTranslation } from 'react-i18next';
 export function Projects() {
   const { t } = useTranslation();
 
-  const projects = [
-    {
-      title: 'Thesis: Isolation of Coliphages and Their Bio-control Application Against Antibiotic-Resistant E.coli Biofilms',
-      description: [
-        'Isolated and characterized Coliphages from environmental sewage samples targeting antibiotic-resistant E. coli biofilms.',
-        'Adopted an interdisciplinary approach to investigate phage-based biological control as a sustainable, eco-friendly alternative to chemical disinfectants, integrating environmental microbiology, public health, and biotechnology to address pollution and antimicrobial resistance (AMR).'
-      ],
-      supervisor: 'Dr. Bushra Uzair, Associate Professor',
-      institution: 'International Islamic University Islamabad',
-      technologies: ['Coliphage Isolation', 'Biofilm Assays', 'Microbiological Techniques', 'Environmental Remediation'],
-      image: '/website/Projects/KAUST CV.png',
-      icon: <Dna className="w-6 h-6" />,
-      status: 'Completed',
-      period: '2025 - Defense Done',
-      tags: [],
-    },
-    {
-      title: 'Understanding Vitiligo: Exploring Self-Esteem & Quality of Life',
-      description: 'Conducted data collection through surveys and analyzed relationship between vitiligo and psychological wellbeing.',
-      institution: 'Immunology Course Project | IIUI',
-      technologies: ['Survey Design', 'Data Collection', 'Psychological Analysis'],
-      images: ['/website/Projects/6.png', '/website/Projects/7.png'],
-      icon: <HeartPulse className="w-6 h-6" />,
-      status: 'Completed',
-      period: '2024',
-      tags: [],
-    },
-    {
-      title: 'Bacterial Isolation from Traditional Fermented Foods',
-      description: 'Prepared fermented food samples and performed serial dilutions. Isolated and identified bacterial species using standard laboratory techniques including morphological characterization.',
-      institution: 'Microbial Biotechnology Laboratory Project | IIUI',
-      technologies: ['Serial Dilution', 'Bacterial Isolation', 'Morphological Analysis'],
-      image: '/website/Projects/8.png',
-      icon: <Microscope className="w-6 h-6" />,
-      status: 'Completed',
-      period: '2024',
-      tags: [],
-    },
-  ];
+  const iconMap: { [key: number]: React.ReactNode } = {
+    0: <Dna className="w-6 h-6" />,
+    1: <HeartPulse className="w-6 h-6" />,
+    2: <Microscope className="w-6 h-6" />,
+  };
+
+  const imageMap: { [key: number]: { image?: string; images?: string[] } } = {
+    0: { image: '/website/Projects/KAUST CV.png' },
+    1: { images: ['/website/Projects/6.png', '/website/Projects/7.png'] },
+    2: { image: '/website/Projects/8.png' },
+  };
+
+  const projects = (t('projects.items', { returnObjects: true }) as Array<{
+    title: string;
+    description: string | string[];
+    institution: string;
+    technologies: string[];
+    status: string;
+    period: string;
+    supervisor?: string;
+  }>).map((project, idx) => ({
+    ...project,
+    icon: iconMap[idx],
+    tags: [],
+    ...imageMap[idx],
+  }));
 
   return (
     <SectionWrapper
