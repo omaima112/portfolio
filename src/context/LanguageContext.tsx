@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import i18n from '../i18n/config';
 
 interface LanguageContextType {
   language: 'en' | 'ar';
@@ -10,30 +11,26 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<'en' | 'ar'>('en');
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load language preference from localStorage on mount
+  // Load language preference and set i18n language
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language') as 'en' | 'ar' | null;
-    if (savedLanguage) {
-      setLanguage(savedLanguage);
-      document.documentElement.lang = savedLanguage;
-      document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
-    }
-    setIsLoaded(true);
+    const langToUse = savedLanguage || 'en';
+    
+    setLanguage(langToUse);
+    i18n.changeLanguage(langToUse);
+    document.documentElement.lang = langToUse;
+    document.documentElement.dir = langToUse === 'ar' ? 'rtl' : 'ltr';
   }, []);
 
   const toggleLanguage = () => {
     const newLanguage = language === 'en' ? 'ar' : 'en';
     setLanguage(newLanguage);
+    i18n.changeLanguage(newLanguage);
     localStorage.setItem('language', newLanguage);
     document.documentElement.lang = newLanguage;
     document.documentElement.dir = newLanguage === 'ar' ? 'rtl' : 'ltr';
   };
-
-  if (!isLoaded) {
-    return <>{children}</>;
-  }
 
   const dir = language === 'ar' ? 'rtl' : 'ltr';
 
