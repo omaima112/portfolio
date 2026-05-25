@@ -42,7 +42,7 @@ export function Awards() {
             />
             {index === 0 && (
               <div
-                className="absolute top-4 right-4 inline-flex items-center px-3 py-1.5 rounded-full text-sm font-bold"
+                className="absolute top-4 end-4 inline-flex items-center px-3 py-1.5 rounded-full text-sm font-bold"
                 style={GOLDEN_BADGE}
               >
                 2nd Place

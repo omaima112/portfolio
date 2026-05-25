@@ -47,22 +47,44 @@ export function Experiences() {
           const lightboxImages: LightboxImage[] = exp.images
             ? exp.images.map(src => ({ src }))
             : exp.image ? [{ src: exp.image }] : [];
-
           const isCertificate = !exp.images && !!exp.image;
+
+          const mediaSlot = (extraClass = '') => hasImages && (
+            <div
+              className={`group relative overflow-hidden cursor-pointer ${extraClass}`}
+              onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
+            >
+              {exp.images && exp.images.length > 0 ? (
+                <Slideshow images={exp.images.map(src => ({ src }))} interval={2500} className="w-full h-full" />
+              ) : (
+                <ImageWithFallback
+                  src={exp.image!}
+                  alt={exp.title}
+                  className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
+                />
+              )}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
+                <div className="bg-black/70 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
+                  Click to<br />view
+                </div>
+              </div>
+            </div>
+          );
 
           return (
             <div
               key={index}
               className="bg-white rounded-2xl shadow-md border border-[#EED1E6] overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              {/* coloured top accent bar */}
+              {/* top accent bar */}
               <div className="h-1 bg-gradient-to-r from-[#5A2653] to-[#C87BAE]" />
 
-              <div className="p-6 flex gap-5 items-start">
-                {/* ── Text column ── */}
-                <div className="flex-1 min-w-0 space-y-3">
+              {/* Mobile: image on top, full width */}
+              {mediaSlot('md:hidden h-48 w-full')}
 
-                  {/* Title row */}
+              {/* Desktop: text + thumbnail side by side */}
+              <div className="p-6 flex gap-5 items-start">
+                <div className="flex-1 min-w-0 space-y-3">
                   <div className="flex items-start gap-2.5">
                     <Briefcase className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-0.5" />
                     <h3 className="font-heading text-[#5A2653] text-lg font-semibold leading-snug">
@@ -70,44 +92,30 @@ export function Experiences() {
                     </h3>
                   </div>
 
-                  {/* Institution */}
-                  <div className="flex items-start gap-2 pl-7">
+                  <div className="flex items-start gap-2 ps-7">
                     <MapPin className="w-4 h-4 text-[#C87BAE] flex-shrink-0 mt-0.5" />
-                    <p className="font-body text-[#7E3F74] text-sm leading-snug">
-                      {exp.subtitle}
-                    </p>
+                    <p className="font-body text-[#7E3F74] text-sm leading-snug">{exp.subtitle}</p>
                   </div>
 
-                  {/* Divider */}
-                  <div className="border-t border-[#F0D8EB] mx-0" />
+                  <div className="border-t border-[#F0D8EB]" />
 
-                  {/* Description */}
-                  <p className="font-body text-gray-600 text-sm leading-relaxed pl-7">
-                    {exp.description}
-                  </p>
+                  <p className="font-body text-gray-600 text-sm leading-relaxed ps-7">{exp.description}</p>
 
-                  {/* Date */}
-                  <div className="flex items-center gap-2 pl-7 pt-1">
+                  <div className="flex items-center gap-2 ps-7 pt-1">
                     <Calendar className="w-4 h-4 text-[#C87BAE]" />
-                    <span className="font-body text-[#7E3F74] text-sm font-medium italic">
-                      {exp.date}
-                    </span>
+                    <span className="font-body text-[#7E3F74] text-sm font-medium italic">{exp.date}</span>
                   </div>
                 </div>
 
-                {/* ── Thumbnail ── strictly 120×120, never grows */}
+                {/* Desktop-only thumbnail */}
                 {hasImages && (
                   <div
-                    className="group relative flex-shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 border-[#EED1E6] shadow-sm hover:border-[#C87BAE] transition-colors duration-200"
+                    className="hidden md:block group relative flex-shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 border-[#EED1E6] shadow-sm hover:border-[#C87BAE] transition-colors duration-200"
                     style={{ width: 190, height: 190 }}
                     onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                   >
                     {exp.images && exp.images.length > 0 ? (
-                      <Slideshow
-                        images={exp.images.map(src => ({ src }))}
-                        interval={2500}
-                        className="w-full h-full"
-                      />
+                      <Slideshow images={exp.images.map(src => ({ src }))} interval={2500} className="w-full h-full" />
                     ) : (
                       <ImageWithFallback
                         src={exp.image!}
@@ -115,7 +123,6 @@ export function Experiences() {
                         className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
                       />
                     )}
-
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
                       <div className="bg-black/70 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
                         Click to<br />view
@@ -130,11 +137,7 @@ export function Experiences() {
       </div>
 
       {lightbox && (
-        <ImageLightbox
-          images={lightbox.images}
-          title={lightbox.title}
-          onClose={() => setLightbox(null)}
-        />
+        <ImageLightbox images={lightbox.images} title={lightbox.title} onClose={() => setLightbox(null)} />
       )}
     </SectionWrapper>
   );
