@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Award, CheckCircle, ZoomIn } from 'lucide-react';
+import { Award, CheckCircle } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Badge } from './ui/badge';
 import { useTranslation } from 'react-i18next';
@@ -49,7 +49,7 @@ export function Certificates() {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
             >
               <div
-                className={`relative h-64 overflow-hidden bg-white ${cert.image ? 'cursor-pointer' : ''}`}
+                className={`group relative h-64 overflow-hidden bg-white ${cert.image ? 'cursor-pointer' : ''}`}
                 onClick={cert.image ? () => setLightbox({ images: [{ src: cert.image }], title: cert.title }) : undefined}
               >
                 {cert.image ? (
@@ -59,9 +59,9 @@ export function Certificates() {
                       alt={cert.title}
                       className="w-full h-full object-contain p-2"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
-                      <div className="bg-black/50 rounded-full p-2">
-                        <ZoomIn className="w-6 h-6 text-white" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20 pointer-events-none z-10">
+                      <div className="bg-black/60 text-white text-sm font-semibold px-4 py-2 rounded-full">
+                        Click to view
                       </div>
                     </div>
                   </>
@@ -70,11 +70,11 @@ export function Certificates() {
                     <span className="font-heading text-[#5A2653]">{t('certificates.ongoing') || 'Ongoing'}</span>
                   </div>
                 )}
-                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2">
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full flex items-center gap-2 pointer-events-none">
                   {cert.icon}
                   <span className="font-heading text-[#5A2653]">{cert.date}</span>
                 </div>
-                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full pointer-events-none">
                   <span className="font-heading text-[#5A2653] text-xs">{((cert.subtitle || '').split('|')[0]).trim()}</span>
                 </div>
               </div>
@@ -86,10 +86,7 @@ export function Certificates() {
                 {cert.skills && (
                   <div className="flex flex-wrap gap-1.5">
                     {cert.skills.map((s, i) => (
-                      <Badge
-                        key={i}
-                        className="bg-[#F6E1F0] text-[#5A2653] px-2 py-0.5 text-xs"
-                      >
+                      <Badge key={i} className="bg-[#F6E1F0] text-[#5A2653] px-2 py-0.5 text-xs">
                         {s.trim()}
                       </Badge>
                     ))}

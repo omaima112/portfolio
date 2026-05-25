@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Presentation, Video, ZoomIn } from 'lucide-react';
+import { Presentation, Video } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useTranslation } from 'react-i18next';
 import { ImageLightbox, LightboxImage } from './ImageLightbox';
@@ -48,24 +48,24 @@ export function Seminars() {
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
             >
               <div
-                className={`relative h-64 overflow-hidden bg-[#F6E1F0] ${seminar.image ? 'cursor-pointer' : ''}`}
+                className={`group relative h-64 overflow-hidden bg-[#F6E1F0] ${seminar.image ? 'cursor-pointer' : ''}`}
                 onClick={seminar.image ? () => setLightbox({ images: [{ src: seminar.image }], title: seminar.title }) : undefined}
               >
-                {seminar.image ? (
+                {seminar.image && (
                   <>
                     <ImageWithFallback
                       src={seminar.image}
                       alt={seminar.title}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <div className="bg-black/50 rounded-full p-2">
-                        <ZoomIn className="w-6 h-6 text-white" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                      <div className="bg-black/60 text-white text-sm font-semibold px-4 py-2 rounded-full">
+                        Click to view
                       </div>
                     </div>
                   </>
-                ) : null}
+                )}
               </div>
 
               <div className="p-6">

@@ -1,14 +1,22 @@
 import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Heart, Award, Sparkles, ZoomIn } from 'lucide-react';
+import { Heart, Award, Sparkles } from 'lucide-react';
 import { Slideshow } from './Slideshow';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useTranslation } from 'react-i18next';
 import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
+const CLICK_TO_VIEW = (
+  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+    <div className="bg-black/60 text-white text-sm font-semibold px-4 py-2 rounded-full">
+      Click to view
+    </div>
+  </div>
+);
+
 export function Leadership() {
   const { t } = useTranslation();
-  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string; startIndex: number } | null>(null);
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string } | null>(null);
 
   const iconMap = [<Award className="w-6 h-6" />, <Heart className="w-6 h-6" />, <Sparkles className="w-6 h-6" />];
 
@@ -53,41 +61,31 @@ export function Leadership() {
             key={index}
             className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6] mx-auto max-w-[700px]"
           >
-            {index === 0 && item.slideshow ? (
-              <div className="relative h-64 overflow-hidden bg-[#F6E1F0]">
-                <Slideshow
-                  images={item.slideshow.images}
-                  className="h-full"
-                  onImageClick={(currentIdx) =>
-                    setLightbox({
-                      images: item.slideshow!.images,
-                      title: item.title,
-                      startIndex: currentIdx,
-                    })
-                  }
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
-              </div>
-            ) : null}
-
-            {index > 0 && item.image ? (
+            {index === 0 && item.slideshow && (
               <div
                 className="group relative h-64 overflow-hidden bg-[#F6E1F0] cursor-pointer"
-                onClick={() => setLightbox({ images: [{ src: item.image! }], title: item.title, startIndex: 0 })}
+                onClick={() => setLightbox({ images: item.slideshow!.images, title: item.title })}
+              >
+                <Slideshow images={item.slideshow.images} className="w-full h-full" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none" />
+                {CLICK_TO_VIEW}
+              </div>
+            )}
+
+            {index > 0 && item.image && (
+              <div
+                className="group relative h-64 overflow-hidden bg-[#F6E1F0] cursor-pointer"
+                onClick={() => setLightbox({ images: [{ src: item.image! }], title: item.title })}
               >
                 <ImageWithFallback
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                  <div className="bg-black/50 rounded-full p-2">
-                    <ZoomIn className="w-6 h-6 text-white" />
-                  </div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+                {CLICK_TO_VIEW}
               </div>
-            ) : null}
+            )}
 
             <div className="p-6">
               <div className="flex items-start gap-3 mb-3">
@@ -117,7 +115,6 @@ export function Leadership() {
         <ImageLightbox
           images={lightbox.images}
           title={lightbox.title}
-          startIndex={lightbox.startIndex}
           onClose={() => setLightbox(null)}
         />
       )}
