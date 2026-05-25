@@ -49,7 +49,7 @@ export function Experiences() {
       subtitle={t('experiences.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
-      <div className="max-w-4xl mx-auto space-y-6">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {experiences.map((exp, index) => {
           const hasImages = (exp.images && exp.images.length > 0) || exp.image;
           const lightboxImages: LightboxImage[] = exp.images
