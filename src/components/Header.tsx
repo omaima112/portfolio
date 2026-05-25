@@ -46,7 +46,7 @@ export function Header({ pages, currentPage, onNavigate }: HeaderProps) {
             </button>
 
             <a
-              href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
+              href="https://www.linkedin.com/in/fatima-m-m-186999384/"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 rounded-lg transition-all duration-300 hover:bg-[#F6E1F0] text-[#5A2653]"

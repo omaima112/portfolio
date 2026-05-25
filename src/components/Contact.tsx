@@ -68,7 +68,7 @@ export function Contact() {
                 </div>
 
                 <a
-                  href="https://www.linkedin.com/in/fatima-m-mushtaq-186999384"
+                  href="https://www.linkedin.com/in/fatima-m-m-186999384/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors duration-200"

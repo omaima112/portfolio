@@ -42,11 +42,6 @@ export function Education() {
                   <p className="font-body text-[#7E3F74] mb-2">{edu.institution}</p>
                 </div>
                 
-                {edu.currentSemester && (
-                  <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#5A2653] to-[#7E3F74] text-white rounded-full font-heading">
-                    {edu.currentSemester}
-                  </span>
-                )}
               </div>
 
               <div className="flex flex-wrap gap-4 mb-4 text-gray-600">
@@ -61,7 +56,7 @@ export function Education() {
                 {edu.expectedGraduation && (
                   <div className="flex items-center gap-2">
                     <Calendar className="w-4 h-4 text-[#A86A9A]" />
-                    <span className="font-body">Expected Graduation: {edu.expectedGraduation}</span>
+                    <span className="font-body">Graduated: {edu.expectedGraduation}</span>
                   </div>
                 )}
               </div>
