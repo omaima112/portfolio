@@ -41,7 +41,7 @@ export function Experiences() {
       subtitle={t('experiences.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
-      <div className="max-w-3xl mx-auto space-y-5">
+      <div className="max-w-3xl mx-auto space-y-6">
         {experiences.map((exp, index) => {
           const hasImages = (exp.images && exp.images.length > 0) || exp.image;
           const lightboxImages: LightboxImage[] = exp.images
@@ -53,61 +53,77 @@ export function Experiences() {
           return (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg border border-[#EED1E6] p-5 flex gap-4 items-start hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-md border border-[#EED1E6] overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              {/* Text — takes all remaining space, won't overflow */}
-              <div className="flex-1 min-w-0">
-                <div className="flex items-start gap-2 mb-1.5">
-                  <Briefcase className="w-4 h-4 text-[#5A2653] flex-shrink-0 mt-0.5" />
-                  <h3 className="font-heading text-[#5A2653] text-base font-semibold leading-snug">
-                    {exp.title}
-                  </h3>
-                </div>
+              {/* coloured top accent bar */}
+              <div className="h-1 bg-gradient-to-r from-[#5A2653] to-[#C87BAE]" />
 
-                <div className="flex items-start gap-1.5 mb-2 ml-6">
-                  <MapPin className="w-3.5 h-3.5 text-[#7E3F74] flex-shrink-0 mt-0.5" />
-                  <p className="font-body text-[#7E3F74] text-sm leading-snug">{exp.subtitle}</p>
-                </div>
+              <div className="p-6 flex gap-5 items-start">
+                {/* ── Text column ── */}
+                <div className="flex-1 min-w-0 space-y-3">
 
-                <p className="font-body text-gray-600 text-sm mb-3 ml-6 leading-relaxed">
-                  {exp.description}
-                </p>
+                  {/* Title row */}
+                  <div className="flex items-start gap-2.5">
+                    <Briefcase className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-0.5" />
+                    <h3 className="font-heading text-[#5A2653] text-lg font-semibold leading-snug">
+                      {exp.title}
+                    </h3>
+                  </div>
 
-                <div className="flex items-center gap-1.5 ml-6">
-                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                  <span className="font-body text-gray-400 text-xs italic">{exp.date}</span>
-                </div>
-              </div>
+                  {/* Institution */}
+                  <div className="flex items-start gap-2 pl-7">
+                    <MapPin className="w-4 h-4 text-[#C87BAE] flex-shrink-0 mt-0.5" />
+                    <p className="font-body text-[#7E3F74] text-sm leading-snug">
+                      {exp.subtitle}
+                    </p>
+                  </div>
 
-              {/* Thumbnail — strictly 120×120, never grows */}
-              {hasImages && (
-                <div
-                  className="group relative flex-shrink-0 cursor-pointer rounded-lg overflow-hidden border border-[#EED1E6]"
-                  style={{ width: 120, height: 120 }}
-                  onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
-                >
-                  {exp.images && exp.images.length > 0 ? (
-                    <Slideshow
-                      images={exp.images.map(src => ({ src }))}
-                      interval={2500}
-                      className="w-full h-full"
-                    />
-                  ) : (
-                    <ImageWithFallback
-                      src={exp.image!}
-                      alt={exp.title}
-                      className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
-                    />
-                  )}
+                  {/* Divider */}
+                  <div className="border-t border-[#F0D8EB] mx-0" />
 
-                  {/* "Click to view" overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-                    <div className="bg-black/65 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
-                      Click to<br />view
-                    </div>
+                  {/* Description */}
+                  <p className="font-body text-gray-600 text-sm leading-relaxed pl-7">
+                    {exp.description}
+                  </p>
+
+                  {/* Date */}
+                  <div className="flex items-center gap-2 pl-7 pt-1">
+                    <Calendar className="w-4 h-4 text-[#C87BAE]" />
+                    <span className="font-body text-[#7E3F74] text-sm font-medium italic">
+                      {exp.date}
+                    </span>
                   </div>
                 </div>
-              )}
+
+                {/* ── Thumbnail ── strictly 120×120, never grows */}
+                {hasImages && (
+                  <div
+                    className="group relative flex-shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 border-[#EED1E6] shadow-sm hover:border-[#C87BAE] transition-colors duration-200"
+                    style={{ width: 120, height: 120 }}
+                    onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
+                  >
+                    {exp.images && exp.images.length > 0 ? (
+                      <Slideshow
+                        images={exp.images.map(src => ({ src }))}
+                        interval={2500}
+                        className="w-full h-full"
+                      />
+                    ) : (
+                      <ImageWithFallback
+                        src={exp.image!}
+                        alt={exp.title}
+                        className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
+                      />
+                    )}
+
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
+                      <div className="bg-black/70 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
+                        Click to<br />view
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}
