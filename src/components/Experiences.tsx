@@ -49,28 +49,6 @@ export function Experiences() {
             : exp.image ? [{ src: exp.image }] : [];
           const isCertificate = !exp.images && !!exp.image;
 
-          const mediaSlot = (extraClass = '') => hasImages && (
-            <div
-              className={`group relative overflow-hidden cursor-pointer ${extraClass}`}
-              onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
-            >
-              {exp.images && exp.images.length > 0 ? (
-                <Slideshow images={exp.images.map(src => ({ src }))} interval={2500} className="w-full h-full" />
-              ) : (
-                <ImageWithFallback
-                  src={exp.image!}
-                  alt={exp.title}
-                  className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
-                />
-              )}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
-                <div className="bg-black/70 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
-                  Click to<br />view
-                </div>
-              </div>
-            </div>
-          );
-
           return (
             <div
               key={index}
@@ -79,12 +57,10 @@ export function Experiences() {
               {/* top accent bar */}
               <div className="h-1 bg-gradient-to-r from-[#5A2653] to-[#C87BAE]" />
 
-              {/* Mobile: image on top, full width */}
-              {mediaSlot('md:hidden h-48 w-full')}
-
-              {/* Desktop: text + thumbnail side by side */}
-              <div className="p-6 flex gap-5 items-start">
-                <div className="flex-1 min-w-0 space-y-3">
+              {/* Card body: on small screens stacks (text then thumbnail), on larger screens side-by-side */}
+              <div className="p-6 flex flex-col gap-4">
+                {/* Text content */}
+                <div className="space-y-3">
                   <div className="flex items-start gap-2.5">
                     <Briefcase className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-0.5" />
                     <h3 className="font-heading text-[#5A2653] text-lg font-semibold leading-snug">
@@ -101,17 +77,17 @@ export function Experiences() {
 
                   <p className="font-body text-gray-600 text-sm leading-relaxed ps-7">{exp.description}</p>
 
-                  <div className="flex items-center gap-2 ps-7 pt-1">
+                  <div className="flex items-center gap-2 ps-7">
                     <Calendar className="w-4 h-4 text-[#C87BAE]" />
                     <span className="font-body text-[#7E3F74] text-sm font-medium italic">{exp.date}</span>
                   </div>
                 </div>
 
-                {/* Desktop-only thumbnail */}
+                {/* Thumbnail — full-width fixed-height strip below text */}
                 {hasImages && (
                   <div
-                    className="hidden md:block group relative flex-shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 border-[#EED1E6] shadow-sm hover:border-[#C87BAE] transition-colors duration-200"
-                    style={{ width: 190, height: 190 }}
+                    className="group relative w-full overflow-hidden rounded-xl cursor-pointer border-2 border-[#EED1E6] hover:border-[#C87BAE] transition-colors duration-200"
+                    style={{ height: 180 }}
                     onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                   >
                     {exp.images && exp.images.length > 0 ? (
@@ -120,12 +96,12 @@ export function Experiences() {
                       <ImageWithFallback
                         src={exp.image!}
                         alt={exp.title}
-                        className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
+                        className={`w-full h-full ${isCertificate ? 'object-contain p-2 bg-white' : 'object-cover'}`}
                       />
                     )}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
-                      <div className="bg-black/70 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
-                        Click to<br />view
+                      <div className="bg-black/70 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
+                        Click to view
                       </div>
                     </div>
                   </div>
