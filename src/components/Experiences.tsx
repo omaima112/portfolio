@@ -99,7 +99,7 @@ export function Experiences() {
                 {hasImages && (
                   <div
                     className="group relative flex-shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 border-[#EED1E6] shadow-sm hover:border-[#C87BAE] transition-colors duration-200"
-                    style={{ width: 120, height: 120 }}
+                    style={{ width: 160, height: 160 }}
                     onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                   >
                     {exp.images && exp.images.length > 0 ? (
