@@ -32,23 +32,14 @@ export function Awards() {
     >
       <div className="max-w-4xl mx-auto space-y-6">
         {awards.map((award, index) => (
-          <div key={index} className="relative">
-            <InteractiveCard
-              title={award.title}
-              subtitle={award.subtitle}
-              description={award.description}
-              date={award.date}
-              icon={award.icon}
-            />
-            {index === 0 && (
-              <div
-                className="absolute top-4 ltr:right-4 rtl:left-4 inline-flex items-center px-3 py-1.5 rounded-full text-sm font-bold"
-                style={GOLDEN_BADGE}
-              >
-                2nd Place
-              </div>
-            )}
-          </div>
+          <InteractiveCard
+            key={index}
+            title={award.title}
+            subtitle={award.subtitle}
+            description={award.description}
+            date={award.date}
+            icon={award.icon}
+          />
         ))}
       </div>
     </SectionWrapper>

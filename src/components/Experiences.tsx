@@ -57,10 +57,14 @@ export function Experiences() {
               {/* top accent bar */}
               <div className="h-1 bg-gradient-to-r from-[#5A2653] to-[#C87BAE]" />
 
-              {/* Card body: on small screens stacks (text then thumbnail), on larger screens side-by-side */}
-              <div className="p-6 flex flex-col gap-4">
-                {/* Text content */}
-                <div className="space-y-3">
+              {/*
+                Desktop: flex-row → text on left (flex-1), image fixed-width on right
+                Mobile:  flex-col → text on top, image full-width strip below
+              */}
+              <div className="flex flex-col sm:flex-row">
+
+                {/* ── Text ── */}
+                <div className="flex-1 min-w-0 p-6 space-y-3">
                   <div className="flex items-start gap-2.5">
                     <Briefcase className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-0.5" />
                     <h3 className="font-heading text-[#5A2653] text-lg font-semibold leading-snug">
@@ -83,22 +87,30 @@ export function Experiences() {
                   </div>
                 </div>
 
-                {/* Thumbnail — full-width fixed-height strip below text */}
+                {/* ── Image ──
+                    Desktop: 200px wide, stretches full card height (flex default = stretch)
+                    Mobile:  full width, 180px tall strip
+                 */}
                 {hasImages && (
                   <div
-                    className="group relative w-full overflow-hidden rounded-xl cursor-pointer border-2 border-[#EED1E6] hover:border-[#C87BAE] transition-colors duration-200"
-                    style={{ height: 180 }}
+                    className="group relative cursor-pointer overflow-hidden border-t sm:border-t-0 sm:border-s border-[#EED1E6] hover:border-[#C87BAE] transition-colors duration-200"
+                    style={{ flexShrink: 0, flexBasis: 200, minHeight: 180 }}
                     onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                   >
-                    {exp.images && exp.images.length > 0 ? (
-                      <Slideshow images={exp.images.map(src => ({ src }))} interval={2500} className="w-full h-full" />
-                    ) : (
-                      <ImageWithFallback
-                        src={exp.image!}
-                        alt={exp.title}
-                        className={`w-full h-full ${isCertificate ? 'object-contain p-2 bg-white' : 'object-cover'}`}
-                      />
-                    )}
+                    {/* absolute fill so the slideshow/image always fills whatever size the container becomes */}
+                    <div className="absolute inset-0">
+                      {exp.images && exp.images.length > 0 ? (
+                        <Slideshow images={exp.images.map(src => ({ src }))} interval={2500} className="w-full h-full" />
+                      ) : (
+                        <ImageWithFallback
+                          src={exp.image!}
+                          alt={exp.title}
+                          className={`w-full h-full ${isCertificate ? 'object-contain p-2 bg-white' : 'object-cover'}`}
+                        />
+                      )}
+                    </div>
+
+                    {/* hover overlay */}
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 bg-black/30">
                       <div className="bg-black/70 text-white text-sm font-semibold px-3 py-1.5 rounded-full">
                         Click to view
