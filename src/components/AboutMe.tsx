@@ -5,15 +5,42 @@ export function AboutMe() {
   const { t } = useTranslation();
 
   const researchInterests = [
-    'Coliphages',
-    'Antimicrobial Resistance',
-    'Bacterial Biofilms',
-    'Microbial Contaminants',
-    'Wastewater-Based Surveillance',
-    'Environmental Microbiology',
-    'Water Reuse Safety',
-    'One Health',
-    'Microbial Biotechnology',
+    {
+      key: 'coliphages',
+      fallback: 'Coliphages',
+    },
+    {
+      key: 'antimicrobialResistance',
+      fallback: 'Antimicrobial Resistance',
+    },
+    {
+      key: 'bacterialBiofilms',
+      fallback: 'Bacterial Biofilms',
+    },
+    {
+      key: 'microbialContaminants',
+      fallback: 'Microbial Contaminants',
+    },
+    {
+      key: 'wastewaterBasedSurveillance',
+      fallback: 'Wastewater-Based Surveillance',
+    },
+    {
+      key: 'environmentalMicrobiology',
+      fallback: 'Environmental Microbiology',
+    },
+    {
+      key: 'waterReuseSafety',
+      fallback: 'Water Reuse Safety',
+    },
+    {
+      key: 'oneHealth',
+      fallback: 'One Health',
+    },
+    {
+      key: 'microbialBiotechnology',
+      fallback: 'Microbial Biotechnology',
+    },
   ];
 
   return (
@@ -28,7 +55,6 @@ export function AboutMe() {
 
           {/* TEXT */}
           <div className="space-y-6">
-            
 
             <p className="font-body text-gray-700 text-lg md:text-xl leading-relaxed">
               {t('about.paragraph1')}
@@ -42,7 +68,6 @@ export function AboutMe() {
               {t('about.paragraph3')}
             </p>
 
-            {/* Headings removed from text; shown in cards below */}
           </div>
 
           {/* FORCED GAP */}
@@ -50,16 +75,22 @@ export function AboutMe() {
 
           {/* SECTIONS */}
           <div className="space-y-6">
+
             {/* Research Interests Section */}
             <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
-              <h4 className="font-heading text-[#5A2653] text-xl mb-3">{t('about.researchInterests')}</h4>
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">
+                {t('about.researchInterests')}
+              </h4>
+
               <div className="flex flex-wrap gap-2">
                 {researchInterests.map((item, idx) => (
                   <span
                     key={idx}
-                    className={`px-3 py-1 bg-[#F6E1F0] text-[#5A2653] rounded-full font-heading text-sm ${document.documentElement.lang === 'ar' ? 'ar' : ''}`}
+                    className={`px-3 py-1 bg-[#F6E1F0] text-[#5A2653] rounded-full font-heading text-sm ${
+                      document.documentElement.lang === 'ar' ? 'ar' : ''
+                    }`}
                   >
-                    {t(`about.terms.${item}`) || item}
+                    {t(`about.terms.${item.key}`, item.fallback)}
                   </span>
                 ))}
               </div>
@@ -67,11 +98,15 @@ export function AboutMe() {
 
             {/* Beyond Science Section */}
             <div className="bg-white rounded-xl p-6 border border-[#EED1E6] shadow-sm">
-              <h4 className="font-heading text-[#5A2653] text-xl mb-3">{t('about.beyondScience')}</h4>
+              <h4 className="font-heading text-[#5A2653] text-xl mb-3">
+                {t('about.beyondScience')}
+              </h4>
+
               <p className="font-body text-gray-700 text-base md:text-lg leading-relaxed">
                 {t('about.beyondScienceText')}
               </p>
             </div>
+
           </div>
 
         </div>
