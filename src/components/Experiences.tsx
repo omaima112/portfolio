@@ -6,14 +6,6 @@ import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useTranslation } from 'react-i18next';
 import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
-const CLICK_TO_VIEW = (
-  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
-    <div className="bg-black/60 text-white text-sm font-semibold px-4 py-2 rounded-full">
-      Click to view
-    </div>
-  </div>
-);
-
 export function Experiences() {
   const { t } = useTranslation();
   const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string } | null>(null);
@@ -49,7 +41,7 @@ export function Experiences() {
       subtitle={t('experiences.subtitle')}
       className="bg-gradient-to-br from-white to-[#F6E1F0]"
     >
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-3xl mx-auto space-y-5">
         {experiences.map((exp, index) => {
           const hasImages = (exp.images && exp.images.length > 0) || exp.image;
           const lightboxImages: LightboxImage[] = exp.images
@@ -61,11 +53,37 @@ export function Experiences() {
           return (
             <div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border border-[#EED1E6]"
+              className="bg-white rounded-xl shadow-lg border border-[#EED1E6] p-5 flex gap-4 items-start hover:shadow-xl transition-shadow duration-300"
             >
+              {/* Text — takes all remaining space, won't overflow */}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start gap-2 mb-1.5">
+                  <Briefcase className="w-4 h-4 text-[#5A2653] flex-shrink-0 mt-0.5" />
+                  <h3 className="font-heading text-[#5A2653] text-base font-semibold leading-snug">
+                    {exp.title}
+                  </h3>
+                </div>
+
+                <div className="flex items-start gap-1.5 mb-2 ml-6">
+                  <MapPin className="w-3.5 h-3.5 text-[#7E3F74] flex-shrink-0 mt-0.5" />
+                  <p className="font-body text-[#7E3F74] text-sm leading-snug">{exp.subtitle}</p>
+                </div>
+
+                <p className="font-body text-gray-600 text-sm mb-3 ml-6 leading-relaxed">
+                  {exp.description}
+                </p>
+
+                <div className="flex items-center gap-1.5 ml-6">
+                  <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                  <span className="font-body text-gray-400 text-xs italic">{exp.date}</span>
+                </div>
+              </div>
+
+              {/* Thumbnail — strictly 120×120, never grows */}
               {hasImages && (
                 <div
-                  className="group relative h-52 overflow-hidden bg-[#F6E1F0] cursor-pointer"
+                  className="group relative flex-shrink-0 cursor-pointer rounded-lg overflow-hidden border border-[#EED1E6]"
+                  style={{ width: 120, height: 120 }}
                   onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                 >
                   {exp.images && exp.images.length > 0 ? (
@@ -78,34 +96,18 @@ export function Experiences() {
                     <ImageWithFallback
                       src={exp.image!}
                       alt={exp.title}
-                      className={`w-full h-full ${isCertificate ? 'object-contain p-4 bg-white' : 'object-cover'}`}
+                      className={`w-full h-full ${isCertificate ? 'object-contain p-1 bg-white' : 'object-cover'}`}
                     />
                   )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
-                  {CLICK_TO_VIEW}
+
+                  {/* "Click to view" overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+                    <div className="bg-black/65 text-white text-xs font-semibold px-2 py-1 rounded-full text-center leading-tight">
+                      Click to<br />view
+                    </div>
+                  </div>
                 </div>
               )}
-
-              <div className="p-6">
-                <div className="flex items-start gap-3 mb-2">
-                  <Briefcase className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-1" />
-                  <h3 className="font-heading text-[#5A2653] text-lg font-semibold leading-snug">
-                    {exp.title}
-                  </h3>
-                </div>
-
-                <div className="flex items-center gap-2 mb-3 ml-8">
-                  <MapPin className="w-4 h-4 text-[#7E3F74]" />
-                  <p className="font-body text-[#7E3F74] text-sm">{exp.subtitle}</p>
-                </div>
-
-                <p className="font-body text-gray-600 text-sm mb-4 leading-relaxed">{exp.description}</p>
-
-                <div className="flex items-center gap-2 ml-8">
-                  <Calendar className="w-4 h-4 text-gray-400" />
-                  <span className="font-body text-gray-500 text-xs italic">{exp.date}</span>
-                </div>
-              </div>
             </div>
           );
         })}
