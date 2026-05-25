@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Heart, Award, Sparkles } from 'lucide-react';
+import { Heart, Award, Sparkles, ZoomIn } from 'lucide-react';
 import { Slideshow } from './Slideshow';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useTranslation } from 'react-i18next';
+import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
 export function Leadership() {
   const { t } = useTranslation();
-  
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string; startIndex: number } | null>(null);
+
   const iconMap = [<Award className="w-6 h-6" />, <Heart className="w-6 h-6" />, <Sparkles className="w-6 h-6" />];
-  
+
   const leadership = (t('leadership.items', { returnObjects: true }) as Array<{
     title: string;
     subtitle: string;
@@ -52,19 +55,37 @@ export function Leadership() {
           >
             {index === 0 && item.slideshow ? (
               <div className="relative h-64 overflow-hidden bg-[#F6E1F0]">
-                <Slideshow images={item.slideshow.images} className="h-full" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                <Slideshow
+                  images={item.slideshow.images}
+                  className="h-full"
+                  onImageClick={(currentIdx) =>
+                    setLightbox({
+                      images: item.slideshow!.images,
+                      title: item.title,
+                      startIndex: currentIdx,
+                    })
+                  }
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent pointer-events-none"></div>
               </div>
             ) : null}
 
             {index > 0 && item.image ? (
-              <div className="relative h-64 overflow-hidden bg-[#F6E1F0]">
+              <div
+                className="group relative h-64 overflow-hidden bg-[#F6E1F0] cursor-pointer"
+                onClick={() => setLightbox({ images: [{ src: item.image! }], title: item.title, startIndex: 0 })}
+              >
                 <ImageWithFallback
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="bg-black/50 rounded-full p-2">
+                    <ZoomIn className="w-6 h-6 text-white" />
+                  </div>
+                </div>
               </div>
             ) : null}
 
@@ -91,6 +112,15 @@ export function Leadership() {
           </div>
         ))}
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          title={lightbox.title}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }

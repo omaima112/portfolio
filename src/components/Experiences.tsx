@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
 import { InteractiveCard } from './InteractiveCard';
 import { Briefcase } from 'lucide-react';
 import { Slideshow } from './Slideshow';
 import { useTranslation } from 'react-i18next';
+import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
 export function Experiences() {
   const { t } = useTranslation();
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string; startIndex: number } | null>(null);
 
   const experiences = (t('experiences.items', { returnObjects: true }) as Array<{
     title: string;
@@ -40,19 +43,35 @@ export function Experiences() {
                 icon={exp.icon}
               />
             </div>
-            
+
             {exp.images && exp.images.length > 0 && (
               <div className="rounded-lg overflow-hidden shadow-md w-64 h-[280px] flex-shrink-0">
                 <Slideshow
                   images={exp.images.map((src) => ({ src }))}
                   interval={2000}
                   className="w-full h-full"
+                  onImageClick={(currentIdx) =>
+                    setLightbox({
+                      images: exp.images.map((src) => ({ src })),
+                      title: exp.title,
+                      startIndex: currentIdx,
+                    })
+                  }
                 />
               </div>
             )}
           </div>
         ))}
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          title={lightbox.title}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }

@@ -22,6 +22,7 @@ interface InteractiveCardProps {
   icon?: React.ReactNode;
   hoverPreview?: HoverPreview;
   children?: React.ReactNode;
+  onImagesClick?: () => void;
 }
 
 export function InteractiveCard({
@@ -32,6 +33,7 @@ export function InteractiveCard({
   icon,
   hoverPreview,
   children,
+  onImagesClick,
 }: InteractiveCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [currentIdx, setCurrentIdx] = useState(0);

@@ -1,25 +1,28 @@
+import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Award, CheckCircle } from 'lucide-react';
+import { Award, CheckCircle, ZoomIn } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Badge } from './ui/badge';
 import { useTranslation } from 'react-i18next';
+import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
 export function Certificates() {
   const { t } = useTranslation();
-  
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string } | null>(null);
+
   const iconMap = [
     <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />,
     <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />,
     <Award className="w-6 h-6" />, <CheckCircle className="w-6 h-6" />, <Award className="w-6 h-6" />
   ];
-  
+
   const images = [
     '/website/certificates/Capture8.PNG', '/website/certificates/Capture5.PNG', '/website/certificates/Capture3.PNG',
     '/website/certificates/7.PNG', '/website/certificates/Capture6.PNG', '/website/certificates/Capture9.PNG',
     '/website/certificates/Capture4.PNG', '/website/certificates/Capture2.PNG', '/website/certificates/Capture10.PNG',
     '/website/certificates/Capture1.PNG'
   ];
-  
+
   const certificates = (t('certificates.items', { returnObjects: true }) as Array<{
     title: string;
     subtitle: string;
@@ -45,13 +48,23 @@ export function Certificates() {
               key={index}
               className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-[#EED1E6]"
             >
-              <div className="relative h-64 overflow-hidden bg-white">
+              <div
+                className={`relative h-64 overflow-hidden bg-white ${cert.image ? 'cursor-pointer' : ''}`}
+                onClick={cert.image ? () => setLightbox({ images: [{ src: cert.image }], title: cert.title }) : undefined}
+              >
                 {cert.image ? (
-                  <ImageWithFallback
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full h-full object-contain p-2"
-                  />
+                  <>
+                    <ImageWithFallback
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-contain p-2"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+                      <div className="bg-black/50 rounded-full p-2">
+                        <ZoomIn className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center bg-white">
                     <span className="font-heading text-[#5A2653]">{t('certificates.ongoing') || 'Ongoing'}</span>
@@ -87,6 +100,14 @@ export function Certificates() {
           ))}
         </div>
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          title={lightbox.title}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }

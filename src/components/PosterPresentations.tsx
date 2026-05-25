@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { FileText, TrendingUp } from 'lucide-react';
+import { FileText, TrendingUp, ZoomIn } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Slideshow } from './Slideshow';
 import { useTranslation } from 'react-i18next';
+import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
 export function PosterPresentations() {
   const { t } = useTranslation();
-  
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string; startIndex: number } | null>(null);
+
   const posters = (t('posters.items', { returnObjects: true }) as Array<{
     title: string;
     conference: string;
@@ -49,30 +52,50 @@ export function PosterPresentations() {
             >
               <div className="relative h-64 overflow-hidden bg-[#F6E1F0]">
                 {poster.slideshow?.images ? (
-                  <Slideshow images={poster.slideshow.images} className="h-full" />
-                ) : (
-                  <ImageWithFallback
-                    src={poster.image}
-                    alt={poster.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  <Slideshow
+                    images={poster.slideshow.images}
+                    className="h-full"
+                    onImageClick={(currentIdx) =>
+                      setLightbox({
+                        images: poster.slideshow!.images,
+                        title: poster.title,
+                        startIndex: currentIdx,
+                      })
+                    }
                   />
+                ) : (
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() => setLightbox({ images: [{ src: poster.image }], title: poster.title, startIndex: 0 })}
+                  >
+                    <ImageWithFallback
+                      src={poster.image}
+                      alt={poster.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+                      <div className="bg-black/50 rounded-full p-2">
+                        <ZoomIn className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+
                 {poster.award && (
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-[#5A2653] to-[#7E3F74] text-white px-3 py-1 rounded-full flex items-center gap-2 shadow-lg">
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-[#5A2653] to-[#7E3F74] text-white px-3 py-1 rounded-full flex items-center gap-2 shadow-lg pointer-events-none">
                     <TrendingUp className="w-4 h-4" />
                     <span className="font-heading">{poster.award}</span>
                   </div>
                 )}
               </div>
-              
+
               <div className="p-6">
                 <div className="flex items-start gap-3 mb-3">
                   <FileText className="w-5 h-5 text-[#5A2653] flex-shrink-0 mt-1" />
                   <h3 className="font-heading text-[#5A2653] text-xl md:text-2xl font-semibold">{poster.title}</h3>
                 </div>
-                
+
                 <p className="font-body text-[#7E3F74] mb-3">{poster.conference}</p>
                 <p className="font-body text-gray-600">{poster.description}</p>
               </div>
@@ -80,6 +103,15 @@ export function PosterPresentations() {
           ))}
         </div>
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          title={lightbox.title}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }

@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import { SectionWrapper } from './SectionWrapper';
-import { Dna, Microscope, HeartPulse } from 'lucide-react';
+import { Dna, Microscope, HeartPulse, ZoomIn } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 import { Slideshow } from './Slideshow';
 import { useTranslation } from 'react-i18next';
+import { ImageLightbox, LightboxImage } from './ImageLightbox';
 
 export function Projects() {
   const { t } = useTranslation();
+  const [lightbox, setLightbox] = useState<{ images: LightboxImage[]; title: string; startIndex: number } | null>(null);
 
   const iconMap: { [key: number]: React.ReactNode } = {
     0: <Dna className="w-6 h-6" />,
@@ -54,17 +57,40 @@ export function Projects() {
                     images={project.images.map((src) => ({ src }))}
                     className="w-full h-full"
                     interval={2000}
+                    onImageClick={(currentIdx) =>
+                      setLightbox({
+                        images: project.images!.map((src) => ({ src })),
+                        title: project.title,
+                        startIndex: currentIdx,
+                      })
+                    }
                   />
                 ) : (
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+                  <div
+                    className="relative w-full h-full cursor-pointer"
+                    onClick={() =>
+                      setLightbox({
+                        images: [{ src: project.image! }],
+                        title: project.title,
+                        startIndex: 0,
+                      })
+                    }
+                  >
+                    <ImageWithFallback
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20">
+                      <div className="bg-black/50 rounded-full p-2">
+                        <ZoomIn className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  </div>
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                
-                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between pointer-events-none">
                   <div className="flex items-center gap-2 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                     {project.icon}
                     <span className="font-heading text-[#5A2653]">{project.status}</span>
@@ -80,10 +106,9 @@ export function Projects() {
                   )}
                 </div>
               </div>
-              
+
               <div className="p-6">
                 <h3 className="font-heading text-[#5A2653] mb-3 text-2xl md:text-3xl font-semibold">{project.title}</h3>
-                
 
                 {project.supervisor && (
                   <p className="font-body text-gray-700 mb-2">
@@ -96,13 +121,13 @@ export function Projects() {
                     <strong>{t('projects.institution')}:</strong> {project.institution}
                   </p>
                 )}
-                
+
                 {project.period && (
                   <p className="font-body text-gray-600 mb-3 italic">
                     {project.period}
                   </p>
                 )}
-                
+
                 {Array.isArray(project.description) ? (
                   <ul className="list-disc pl-5 text-gray-600 mb-4">
                     {project.description.map((point, idx) => (
@@ -112,7 +137,7 @@ export function Projects() {
                 ) : (
                   <p className="font-body text-gray-600 mb-4">{project.description}</p>
                 )}
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
                     <span
@@ -128,6 +153,15 @@ export function Projects() {
           ))}
         </div>
       </div>
+
+      {lightbox && (
+        <ImageLightbox
+          images={lightbox.images}
+          title={lightbox.title}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }
