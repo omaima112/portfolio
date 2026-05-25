@@ -13,11 +13,11 @@ export function Experiences() {
   const experienceImages: { images?: string[]; image?: string }[] = [
     {
       images: [
-        '/website/Experience/narc3.jpeg',
+        '/website/Experience/narc1.jpeg',
         '/website/Experience/narc2.jpeg',
+        '/website/Experience/narc3.jpeg',
         '/website/Experience/narc4.jpeg',
         '/website/Experience/narc5.jpeg',
-        '/website/Experience/narc1.jpeg',
       ],
     },
     { image: '/website/Experience/bj_cert.jpeg' },
