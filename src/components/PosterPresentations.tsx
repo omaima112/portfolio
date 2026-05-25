@@ -89,7 +89,7 @@ export function PosterPresentations() {
                       className="absolute top-4 right-4 px-3 py-1 rounded-full flex items-center gap-2 shadow-lg font-heading text-sm font-bold pointer-events-none z-10"
                       style={GOLDEN_BADGE_STYLE}
                     >
-                      🏅 {poster.award}
+                      {poster.award}
                     </div>
                   )}
 

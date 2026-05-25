@@ -72,7 +72,7 @@ export function Experiences() {
 
               {hasImages && (
                 <div
-                  className="group relative rounded-lg overflow-hidden shadow-md w-full md:w-64 h-[240px] flex-shrink-0 cursor-pointer"
+                  className="group relative rounded-lg overflow-hidden shadow-md w-full md:w-44 h-[160px] flex-shrink-0 cursor-pointer"
                   onClick={() => setLightbox({ images: lightboxImages, title: exp.title })}
                 >
                   {exp.images && exp.images.length > 0 ? (
