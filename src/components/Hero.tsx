@@ -19,7 +19,7 @@ export function Hero({ onNavigate }: HeroProps) {
           <div className="relative group order-1 md:order-1 flex-shrink-0" style={{minWidth:'16rem'}}>
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#5A2653] shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_0_40px_rgba(90,38,83,0.3)]">
               <ImageWithFallback
-                src="/mainimg.jpg"
+                src="public/IMG_7776.png"
                 alt="Fatima - BS Biotechnology Student"
                 className="w-full h-full object-cover"
               />
